@@ -37,8 +37,8 @@ class Surrealism extends React.Component {
           this.state.surrealism.map (
             (artifact, index) => {
               return <div key={index}>
-                <li>{artifact.name}</li>
-                <li>{artifact.description}</li>
+                <p>{artifact.name}</p>
+                <img src={artifact.image} />
               </div>
             }
           )
