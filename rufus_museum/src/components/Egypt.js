@@ -31,6 +31,7 @@ class Egypt extends React.Component {
   render() {
     return (
       <div>
+      {this.getEgypt()}
         <p>This is the Egypt page.</p>
         <ul>
         {

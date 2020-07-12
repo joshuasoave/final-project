@@ -4,6 +4,7 @@ import axios from 'axios';
 class Surrealism extends React.Component {
   state = {
     artifacts: [],
+    surrealism: []
   }
 
   componentDidMount = () => {
@@ -29,7 +30,20 @@ class Surrealism extends React.Component {
   render() {
     return (
       <div>
+      {this.getSurrealism()}
         <p>This is the Surrealism exhibit.</p>
+        <ul>
+        {
+          this.state.surrealism.map (
+            (artifact, index) => {
+              return <div key={index}>
+                <li>{artifact.name}</li>
+                <li>{artifact.description}</li>
+              </div>
+            }
+          )
+        }
+        </ul>
       </div>
     )
   }
