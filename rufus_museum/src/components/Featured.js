@@ -22,7 +22,7 @@ class Featured extends React.Component {
     this.state.artifacts.map(
       (artifact) => {
         //if the artifact theme is Featured push it into featured so we can use it in the page
-        if(artifact.Theme === "Featured"){
+        if(artifact.theme === "Featured"){
           this.state.featured.push(artifact)
         }
       }
@@ -40,8 +40,8 @@ class Featured extends React.Component {
           this.state.featured.map (
             (artifact, index) => {
               return<div key={index}>
-              <li>{artifact.Name}</li>
-              <li>{artifact.Description}</li>
+                <li>{artifact.name}</li>
+                <li>{artifact.description}</li>
               </div>
             }
           )

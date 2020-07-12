@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class Egypt extends React.Component {
   state = {
-    artifacts: {}
+    artifacts: [],
   }
 
   componentDidMount = () => {
