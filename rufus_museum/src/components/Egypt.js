@@ -5,6 +5,7 @@ class Egypt extends React.Component {
   state = {
     artifacts: {}
   }
+
   componentDidMount = () => {
     axios.get('/artifacts').then(
       (response) => {
