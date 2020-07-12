@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './components/Header.js';
 import Home from './components/Home.js';
 import About from './components/About.js';
-import Exhibits from './components/Exhibits.js';
 import Featured from './components/Featured.js';
 import Egypt from './components/Egypt.js';
 import Surrealism from './components/Surrealism.js';

@@ -1,10 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import Exhibits from './Exhibits.js';
-import Featured from './Featured.js';
-import Egypt from './Egypt.js';
-import Surrealism from './Surrealism.js';
-import Space from './Space.js';
+import Exhibits from './Exhibits.js'
 
 class Home extends React.Component {
   render() {

@@ -1,9 +1,5 @@
 import React from 'react';
-import {Link, Router} from 'react-router-dom';
-import Featured from './Featured.js';
-import Egypt from './Egypt.js';
-import Surrealism from './Surrealism.js';
-import Space from './Space.js';
+import {Link} from 'react-router-dom';
 
 
 class Exhibits extends React.Component{
