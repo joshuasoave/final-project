@@ -22,7 +22,7 @@ class Space extends React.Component {
       (artifact) => {
         //if the artifact theme is Space push it into the space array so we can use it in the page
         if(artifact.theme === "Space"){
-          this.state.featured.push(artifact)
+          this.state.space.push(artifact)
         }
       }
     )
