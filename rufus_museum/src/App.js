@@ -6,6 +6,7 @@ import Featured from './components/Featured.js';
 import Egypt from './components/Egypt.js';
 import Surrealism from './components/Surrealism.js';
 import Space from './components/Space.js';
+import Exhibit from './components/Exhibit.js';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -28,6 +29,7 @@ class App extends React.Component {
             <Route path="/egypt" component={Egypt} />
             <Route path="/surrealism" component={Surrealism} />
             <Route path="/space" component={Space} />
+            <Route path="/exhibit/:id" component={Exhibit}/>
           </main>
         </div>
       </Router>
