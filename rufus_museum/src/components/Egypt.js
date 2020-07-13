@@ -17,7 +17,7 @@ class Egypt extends React.Component {
     )
   }
   //get all the egypt type artifacts
-  getEgypt = (array) => {
+  getEgypt = () => {
     this.state.artifacts.map(
       (artifact) => {
         //if the artifact theme is Egypt push it into the egypt array so we can use it on the page
@@ -29,9 +29,9 @@ class Egypt extends React.Component {
   }
 
   render() {
+    this.getEgypt();
     return (
       <div>
-      {this.getEgypt()}
         <p>This is the Egypt page.</p>
         <ul>
         {
@@ -39,7 +39,7 @@ class Egypt extends React.Component {
             (artifact, index) => {
               return<div key={index}>
                 <p>{artifact.name}</p>
-                <img src={artifact.image} />
+                <img src={artifact.image} alt={artifact.name}/>
               </div>
             }
           )

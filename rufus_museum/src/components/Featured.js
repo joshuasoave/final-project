@@ -18,7 +18,7 @@ class Featured extends React.Component {
   }
 
   //get all the artifacts with type of featured
-  getFeatured = (array) => {
+  getFeatured = () => {
     this.state.artifacts.map(
       (artifact) => {
         //if the artifact theme is Featured push it into featured so we can use it in the page
@@ -41,7 +41,7 @@ class Featured extends React.Component {
             (artifact, index) => {
               return<div key={index}>
                 <p>{artifact.name}</p>
-                <img src={artifact.image} />
+                <img src={artifact.image} alt={artifact.name}/>
               </div>
             }
           )

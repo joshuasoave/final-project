@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Artifacts = require('../models/artifacts.js');
+const artifactSeed = require('../seed/artifacts.js')
 
 ///////
 //Create
@@ -10,6 +11,14 @@ router.post('/', (req, res) => {
     res.json(createdArtifact);
   });
 });
+
+////
+//seed
+////
+router.get('/seed', (req, res) => {
+  Artifacts.create(artifactSeed)
+  res.redirect('/artifacts')
+})
 
 /////////
 //Get
@@ -37,5 +46,7 @@ router.put('/:id', (req, res) => {
     res.json(updatedArtifact);
   });
 });
+
+
 
 module.exports = router;

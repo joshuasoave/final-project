@@ -17,7 +17,7 @@ class Space extends React.Component {
     )
   }
   //get all the space type artifacts
-  getSpace = (array) => {
+  getSpace = () => {
     this.state.artifacts.map(
       (artifact) => {
         //if the artifact theme is Space push it into the space array so we can use it in the page
@@ -38,7 +38,7 @@ class Space extends React.Component {
             (artifact, index) => {
               return<div key={index}>
                 <p>{artifact.name}</p>
-                <img src={artifact.image} />
+                <img src={artifact.image} alt={artifact.name}/>
               </div>
             }
           )

@@ -38,7 +38,7 @@ class Surrealism extends React.Component {
             (artifact, index) => {
               return <div key={index}>
                 <p>{artifact.name}</p>
-                <img src={artifact.image} />
+                <img src={artifact.image} alt={artifact.name}/>
               </div>
             }
           )
