@@ -10,7 +10,7 @@ require('dotenv').config();
 /////////
 //Port
 ////////
-const PORT = process.env.PORT || 5000
+const PORT = 5000
 
 ///////////
 //Database
@@ -30,7 +30,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 ////////////
 //controllers
 ////////////
-const artifactsController = require('./controllers/artifacts.js');
+const artifactsController = require('./server/controllers/artifacts.js');
 
 //////////
 //middleware
