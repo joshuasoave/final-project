@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 class Surrealism extends React.Component {
   state = {
@@ -38,7 +39,13 @@ class Surrealism extends React.Component {
             (artifact, index) => {
               return <div key={index}>
                 <p>{artifact.name}</p>
-                <img src={artifact.image} alt={artifact.name}/>
+                <Link to={{
+                  pathname: `/exhibit/${artifact._id}`,
+                  state: {artifact}
+                }}>
+                <img src={artifact.image}
+                 alt={artifact.name}/>
+                </Link>
               </div>
             }
           )

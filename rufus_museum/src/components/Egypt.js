@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Exhibit from './Exhibit.js'
-import { Link, Router, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Egypt extends React.Component {
   state = {
