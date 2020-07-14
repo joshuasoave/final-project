@@ -31,12 +31,14 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 //controllers
 ////////////
 const artifactsController = require('./server/controllers/artifacts.js');
+const eventsController = require('./server/controllers/events.js');
 
 //////////
 //middleware
 /////////
 app.use(express.json());
 app.use('/artifacts', artifactsController);
+app.use('/events', eventsController);
 
 ////////
 //Listen

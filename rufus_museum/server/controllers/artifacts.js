@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
 router.get('/seed', (req, res) => {
   Artifacts.create(artifactSeed)
   res.redirect('/artifacts')
-})
+});
 
 /////////
 //Get
