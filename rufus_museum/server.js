@@ -32,6 +32,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 ////////////
 const artifactsController = require('./server/controllers/artifacts.js');
 const eventsController = require('./server/controllers/events.js');
+const usersController = require('./server/controllers/users.js')
 
 //////////
 //middleware
@@ -39,6 +40,7 @@ const eventsController = require('./server/controllers/events.js');
 app.use(express.json());
 app.use('/artifacts', artifactsController);
 app.use('/events', eventsController);
+app.use('/users', usersController);
 
 ////////
 //Listen

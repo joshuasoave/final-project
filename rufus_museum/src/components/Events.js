@@ -23,11 +23,16 @@ class Events extends React.Component {
       <div>
         {
           this.state.events.map(
-            (event, index) => {
+            (eachEvent, index) => {
               return <div key={index}>
-                <img src={event.image} alt={event.title}/>
-                <h3>{event.title}</h3>
-                <p>{event.date}</p>
+              <Link to={{
+                pathname: `/event/${eachEvent._id}`,
+                state: {eachEvent}
+              }}>
+                <img src={eachEvent.image} alt={eachEvent.title}/>
+                <h3>{eachEvent.title}</h3>
+                <p>{eachEvent.date}</p>
+              </Link>
               </div>
             }
           )

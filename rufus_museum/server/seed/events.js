@@ -15,6 +15,7 @@ const events = [
     title: "Homeric Authorship",
     date: "July 27 2020",
     time: "2-3pm",
+    image: "https://i.imgur.com/rpuooGc.jpg",
     price: "Free",
     location: "Online",
     description: "Attend this session on The Homeric Question. Who was Homer and what works was Homer responsible for creating? We'll explore these topics and more in this free session."
