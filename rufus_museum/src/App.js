@@ -99,8 +99,7 @@ class App extends React.Component {
       // console.log(response.data);
       if(response.data.username) {
         this.setState({
-          loggedInUser: response.data,
-          isLoggedIn: true
+          loggedInUser: response.data
         })
       } else {
         this.setState({
@@ -108,6 +107,18 @@ class App extends React.Component {
         })
       }
       // console.log(this.state.loggedInUser);
+    })
+  }
+
+  //////////////
+  //Logout
+  /////////////
+  logout = (event) => {
+    axios.delete('/session').then((response) => {
+      this.setState({
+        //set the logged in user to null so all of the ternary operators come back false
+        loggedInUser: null
+      })
     })
   }
 
@@ -126,7 +137,7 @@ class App extends React.Component {
             </ul>
             {
             this.state.loggedInUser ?
-              <button>Logout</button> : " "
+              <button onClick={this.logout}>Logout</button> : " "
             }
           </nav>
           <main>
