@@ -11,15 +11,52 @@ import Exhibits from './components/Exhibits.js';
 import Exhibit from './components/Exhibit.js';
 import Events from './components/Events.js';
 import Event from './components/Event.js';
-import CreateAccount from './components/CreateAccount.js';
 import Profile from './components/Profile.js';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    createAccount: false
   }
+
+  ///////////
+  //Create user
+  //////////
+
+  changeNewPassword = (event) => {
+    this.setState({
+      newPassword: event.target.value
+    })
+  }
+
+  changeNewUsername = (event) => {
+    this.setState({
+      newUsername: event.target.value
+    })
+  }
+
+  createUser = (event) => {
+    event.preventDefault();
+    axios.post(
+      '/users',
+      {
+        username: this.state.newUsername,
+        password: this.state.newPassword
+      }
+    ).then((response) => {
+      console.log(response.data);
+        this.setState({
+          loggedInUser: response.data,
+          isLoggedIn: true
+        })
+    })
+  }
+
+  ////////////
+  //Login
+  ///////////
 
   getUsername = (event) => {
     this.setState({
@@ -33,6 +70,13 @@ class App extends React.Component {
     })
   }
 
+  toggleCreateAccount = (event) => {
+    console.log('clicked');
+    this.setState({
+      createAccount: !this.state.createAccount
+    })
+  }
+
   login = (event) => {
     event.preventDefault();
     axios.post(
@@ -43,10 +87,16 @@ class App extends React.Component {
       }
     ).then((response) => {
       console.log(response.data);
-      this.setState({
-        loggedInUser: response.data,
-        isLoggedIn: true
-      })
+      if(response.data.username) {
+        this.setState({
+          loggedInUser: response.data,
+          isLoggedIn: true
+        })
+      } else {
+        this.setState({
+          message: response.data
+        })
+      }
       // console.log(this.state.loggedInUser);
     })
   }
@@ -83,24 +133,42 @@ class App extends React.Component {
                 component={Event}/>
                 <Route path="/profile"
                 component={Profile}/>
-                <Route path="/createAccount" component={CreateAccount}/>
               </div>
               :
-
               <div>
-                <h2>Login</h2>
-                <form onSubmit={this.login}>
-                Username: <input onKeyUp={this.getUsername} type="text" /><br/>
-                Password: <input onKeyUp={this.getPassword} type="password" /><br/>
-                <input type="submit" value="Login" />
-                </form>
-                <h2>Don't have an account?</h2>
-                <Link to="/createAccount">Create an account</Link>
+              {
+                  this.state.createAccount ?
+                  <div>
+                    <h2>Sign Up</h2>
+                    <form onSubmit={this.createUser}>
+                      Username: <input type="text" onKeyUp={this.changeNewUsername} placeholder="Username" /><br/>
+                      Password: <input type="password" onKeyUp={this.changeNewPassword} placeholder="Password" /><br/>
+                      <input type="submit" value="Sign Up" />
+                    </form>
+                    <h2>Already have an account?</h2>
+                      <a onClick={this.toggleCreateAccount}>Login</a>
+                  </div> :
+                  <div>
+                    <h2>Login</h2>
+                    <form onSubmit={this.login}>
+                    Username: <input onKeyUp={this.getUsername} type="text" placeholder="Username" /><br/>
+                    Password: <input onKeyUp={this.getPassword} type="password" placeholder="Password"/><br/>
+                    <input type="submit" value="Login" />
+                    {
+                      this.state.message ?
+                      <p>Sorry, user not found</p> :
+                      " "
+                    }
+                    </form>
+                    <h2>Don't have an account?</h2>
+                    <a onClick={this.toggleCreateAccount}>Create an account</a>
+                  </div>
+                }
               </div>
             }
 
-
           </main>
+
           <footer>
             <ul>
               <li><Link to="/">Home</Link></li>
@@ -112,6 +180,7 @@ class App extends React.Component {
               }}>Profile</Link></li>
             </ul>
           </footer>
+
         </div>
       </Router>
     )
