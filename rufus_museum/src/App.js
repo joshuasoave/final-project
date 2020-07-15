@@ -86,7 +86,7 @@ class App extends React.Component {
         password: this.state.loginPassword
       }
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       if(response.data.username) {
         this.setState({
           loggedInUser: response.data,
@@ -114,6 +114,10 @@ class App extends React.Component {
               <li><Link to="/exhibits">Exhibits</Link></li>
               <li><Link to="/about">About</Link></li>
             </ul>
+            {
+            this.state.isLoggedIn ?
+              <button>Logout</button> : " "
+            }
           </nav>
           <main>
 
