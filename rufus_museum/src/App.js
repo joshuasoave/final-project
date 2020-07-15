@@ -21,6 +21,17 @@ class App extends React.Component {
     createAccount: false
   }
 
+  ////////
+  //Check session on pg load
+  ////////
+  componentDidMount = () => {
+    axios.get('/session').then((response) => {
+      this.setState({
+        loggedInUser: response.data
+      })
+    })
+  }
+
   ///////////
   //Create user
   //////////
@@ -46,10 +57,9 @@ class App extends React.Component {
         password: this.state.newPassword
       }
     ).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
         this.setState({
           loggedInUser: response.data,
-          isLoggedIn: true
         })
     })
   }
@@ -115,7 +125,7 @@ class App extends React.Component {
               <li><Link to="/about">About</Link></li>
             </ul>
             {
-            this.state.isLoggedIn ?
+            this.state.loggedInUser ?
               <button>Logout</button> : " "
             }
           </nav>
