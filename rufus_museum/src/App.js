@@ -12,7 +12,7 @@ import Exhibit from './components/Exhibit.js';
 import Events from './components/Events.js';
 import Event from './components/Event.js';
 import CreateAccount from './components/CreateAccount.js';
-import UserProfile from './components/Profile.js';
+import Profile from './components/Profile.js';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -66,20 +66,40 @@ class App extends React.Component {
             </ul>
           </nav>
           <main>
-            <Route path="/" exact component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/events" component={Events} />
-            <Route path="/featured" component={Featured}/>
-            <Route path="/egypt" component={Egypt} />
-            <Route path="/surrealism" component={Surrealism} />
-            <Route path="/space" component={Space} />
-            <Route path="/exhibits" component={Exhibits}/>
-            <Route path="/exhibit/:id" component={Exhibit}/>
-            <Route path="/event/:id"
-            component={Event}/>
-            <Route path="/createAccount" component={CreateAccount}/>
-            <Route path="/profile"
-            component={UserProfile} render={props => <UserProfile login = {this.login} />} />
+
+            {
+              this.state.loggedInUser ?
+              <div>
+                <Route path="/" exact component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/events" component={Events} />
+                <Route path="/featured" component={Featured}/>
+                <Route path="/egypt" component={Egypt} />
+                <Route path="/surrealism" component={Surrealism} />
+                <Route path="/space" component={Space} />
+                <Route path="/exhibits" component={Exhibits}/>
+                <Route path="/exhibit/:id" component={Exhibit}/>
+                <Route path="/event/:id"
+                component={Event}/>
+                <Route path="/profile"
+                component={Profile}/>
+                <Route path="/createAccount" component={CreateAccount}/>
+              </div>
+              :
+
+              <div>
+                <h2>Login</h2>
+                <form onSubmit={this.login}>
+                Username: <input onKeyUp={this.getUsername} type="text" /><br/>
+                Password: <input onKeyUp={this.getPassword} type="password" /><br/>
+                <input type="submit" value="Login" />
+                </form>
+                <h2>Don't have an account?</h2>
+                <Link to="/createAccount">Create an account</Link>
+              </div>
+            }
+
+
           </main>
           <footer>
             <ul>
@@ -88,7 +108,7 @@ class App extends React.Component {
               <li><Link to="/exhibits">Exhibits</Link></li>
               <li>Favorites</li>
               <li><Link to={{
-                pathname: "/profile"
+                pathname: "profile"
               }}>Profile</Link></li>
             </ul>
           </footer>
