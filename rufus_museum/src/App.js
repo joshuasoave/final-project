@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Header from './components/Header.js';
 import Home from './components/Home.js';
 import About from './components/About.js';
@@ -11,15 +12,45 @@ import Exhibit from './components/Exhibit.js';
 import Events from './components/Events.js';
 import Event from './components/Event.js';
 import CreateAccount from './components/CreateAccount.js';
-import Profile from './components/Profile.js';
+import UserProfile from './components/Profile.js';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
   state = {
+    isLoggedIn: false
   }
 
-  
+  getUsername = (event) => {
+    this.setState({
+      loginUsername: event.target.value
+    })
+  }
+
+  getPassword = (event) => {
+    this.setState({
+      loginPassword: event.target.value
+    })
+  }
+
+  login = (event) => {
+    event.preventDefault();
+    axios.post(
+      '/session',
+      {
+        username: this.state.loginUsername,
+        password: this.state.loginPassword
+      }
+    ).then((response) => {
+      console.log(response.data);
+      this.setState({
+        loggedInUser: response.data,
+        isLoggedIn: true
+      })
+      // console.log(this.state.loggedInUser);
+    })
+  }
+
 
   render() {
     return (
@@ -48,7 +79,7 @@ class App extends React.Component {
             component={Event}/>
             <Route path="/createAccount" component={CreateAccount}/>
             <Route path="/profile"
-            component={Profile}/>
+            component={UserProfile} render={props => <UserProfile login = {this.login} />} />
           </main>
           <footer>
             <ul>
@@ -56,7 +87,9 @@ class App extends React.Component {
               <li><Link to="/events">Events</Link></li>
               <li><Link to="/exhibits">Exhibits</Link></li>
               <li>Favorites</li>
-              <li><Link to="/profile">Profile</Link></li>
+              <li><Link to={{
+                pathname: "/profile"
+              }}>Profile</Link></li>
             </ul>
           </footer>
         </div>
