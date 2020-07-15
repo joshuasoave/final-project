@@ -17,13 +17,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
   state = {
-    loggedInUser: {
-      user: {
-        username: "",
-        favorites: []
-      }
-    }
   }
+
+  
 
   render() {
     return (

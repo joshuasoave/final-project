@@ -6,6 +6,7 @@ const app = express();
 const mongoose = require('mongoose')
 const db = mongoose.connection;
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 /////////
@@ -34,12 +35,17 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 const artifactsController = require('./server/controllers/artifacts.js');
 const eventsController = require('./server/controllers/events.js');
 const usersController = require('./server/controllers/users.js');
-const sessionController = require('./server/controllers/sessions.js');
+const sessionController = require('./server/controllers/session.js');
 
 //////////
 //middleware
 /////////
 app.use(express.json());
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUnitialized: false
+}))
 app.use('/artifacts', artifactsController);
 app.use('/events', eventsController);
 app.use('/users', usersController);

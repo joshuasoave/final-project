@@ -6,6 +6,6 @@ const userSchema = new mongoose.Schema({
   favorites: {type: Array, default: []}
 })
 
-const User = mongoose.model('User', userSchema);
+const Users = mongoose.model('User', userSchema);
 
-module.exports = User;
+module.exports = Users;
