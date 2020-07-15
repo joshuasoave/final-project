@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
   Users.create(req.body, (err, createdUser) => {
     //set the newly created user to the session
-    req.session.user = createUser;
+    req.session.user = createdUser;
     res.json(createdUser);
   })
 });
