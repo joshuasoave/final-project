@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  favorites: {type: Array, default: []}
+  favorites: Array
 })
 
 const Users = mongoose.model('User', userSchema);

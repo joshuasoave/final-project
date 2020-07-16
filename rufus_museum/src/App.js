@@ -171,7 +171,7 @@ class App extends React.Component {
                       <input type="submit" value="Sign Up" />
                     </form>
                     <h2>Already have an account?</h2>
-                      <a onClick={this.toggleCreateAccount}>Login</a>
+                      <a href="#" onClick={this.toggleCreateAccount}>Login</a>
                   </div> :
                   <div>
                     <h2>Login</h2>
@@ -186,7 +186,7 @@ class App extends React.Component {
                     }
                     </form>
                     <h2>Don't have an account?</h2>
-                    <a onClick={this.toggleCreateAccount}>Create an account</a>
+                    <a href="#" onClick={this.toggleCreateAccount}>Create an account</a>
                   </div>
                 }
               </div>

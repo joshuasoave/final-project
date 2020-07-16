@@ -56,6 +56,6 @@ app.use('/session', sessionController);
 ///////
 app.listen(PORT, () => {
   console.log(
-    'listening'
+    'listening on ' + PORT
   );
 });

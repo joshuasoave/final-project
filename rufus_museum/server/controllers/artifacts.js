@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Artifacts = require('../models/artifacts.js');
-const artifactSeed = require('../seed/artifacts.js')
+const artifactSeed = require('../seed/artifacts.js');
 
 ///////
 //Create
