@@ -27,6 +27,10 @@ router.get('/', (req, res) => {
   })
 })
 
+router.put('/:id/remove', () => {
+
+})
+
 ////////////////////////////
 //Update user favorites
 //////////////////////////
@@ -39,20 +43,7 @@ router.put('/:id', (req, res) => {
     Users.findById(req.session.user._id, (err, foundUser) => {
       //can log the user
       // console.log(currentUser);
-      if(foundUser.favorites.length === 0) {
-        //if they have no favorites yet push is in
         foundUser.favorites.push(foundArtifact)
-      }
-      //if they do have favorites, check to make sure it doesnt already exist
-      for(let artifacts of foundUser.favorites) {
-        // console.log(foundArtifact._id);
-        // console.log(artifacts._id);
-        if(artifacts._id === foundArtifact._id) {
-          console.log('matched!');
-        } else {
-          console.log('no match');
-        }
-      }
       //used the save feature to keep the object in user favorite array
       //https://mongoosejs.com/docs/api.html#model_Model-save
       foundUser.save((error, data) => {
