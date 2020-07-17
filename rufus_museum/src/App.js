@@ -121,6 +121,20 @@ class App extends React.Component {
     })
   }
 
+  //////////
+  //Favoriting an artifact
+  //////////
+
+  favoriteArtifact = () => {
+    // console.log(this.props.location.state.artifact);
+    axios.put(`/users/${this.props.location.state.artifact._id}`).then((response) => {
+      console.log(response);
+      this.setState({
+        loggedInUser: response.data
+      })
+    })
+  }
+
 
   render() {
     return (
