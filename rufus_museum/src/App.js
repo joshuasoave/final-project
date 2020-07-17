@@ -15,16 +15,20 @@ import Profile from './components/Profile.js';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+//https://reactrouter.com/web/api/Route/render-func
+
 class App extends React.Component {
   state = {
     isLoggedIn: false,
     createAccount: false
   }
 
+
   ////////
   //Check session on pg load
   ////////
   componentDidMount = () => {
+    //get the session data and set the user to that state
     axios.get('/session').then((response) => {
       this.setState({
         loggedInUser: response.data
@@ -80,12 +84,7 @@ class App extends React.Component {
     })
   }
 
-  toggleCreateAccount = (event) => {
-    console.log('clicked');
-    this.setState({
-      createAccount: !this.state.createAccount
-    })
-  }
+
 
   login = (event) => {
     event.preventDefault();
@@ -122,6 +121,20 @@ class App extends React.Component {
     })
   }
 
+  //////////
+  //Favoriting an artifact
+  //////////
+
+  favoriteArtifact = () => {
+    // console.log(this.props.location.state.artifact);
+    axios.put(`/users/${this.props.location.state.artifact._id}`).then((response) => {
+      console.log(response);
+      this.setState({
+        loggedInUser: response.data
+      })
+    })
+  }
+
 
   render() {
     return (
@@ -140,58 +153,34 @@ class App extends React.Component {
               <button onClick={this.logout}>Logout</button> : " "
             }
           </nav>
-          <main>
 
-            {
-              this.state.loggedInUser ?
+          <main>
               <div>
                 <Route path="/" exact component={Home} />
                 <Route path="/about" component={About} />
                 <Route path="/events" component={Events} />
                 <Route path="/featured" component={Featured}/>
-                <Route path="/egypt" component={Egypt} />
+                <Route path="/egypt"
+                render={
+                  props => <Egypt artifacts={this.state.artifacts}/>
+                } />
                 <Route path="/surrealism" component={Surrealism} />
                 <Route path="/space" component={Space} />
                 <Route path="/exhibits" component={Exhibits}/>
-                <Route path="/exhibit/:id" component={Exhibit}/>
+                <Route path="/artifacts/exhibit/:id" component={Exhibit}/>
                 <Route path="/event/:id"
                 component={Event}/>
                 <Route path="/profile"
-                component={Profile}/>
+                render={
+                  props => <Profile {...props}
+                  login={this.login}
+                  getUsername={this.getUsername} getPassword={this.getPassword} loggedInUser={this.state.loggedInUser}
+                  createUser={this.createUser}
+                  changeNewPassword={this.changeNewPassword}
+                  changeNewUsername={this.changeNewUsername}
+                  message={this.state.message}
+                  />  }/>
               </div>
-              :
-              <div>
-              {
-                  this.state.createAccount ?
-                  <div>
-                    <h2>Sign Up</h2>
-                    <form onSubmit={this.createUser}>
-                      Username: <input type="text" onKeyUp={this.changeNewUsername} placeholder="Username" /><br/>
-                      Password: <input type="password" onKeyUp={this.changeNewPassword} placeholder="Password" /><br/>
-                      <input type="submit" value="Sign Up" />
-                    </form>
-                    <h2>Already have an account?</h2>
-                      <a onClick={this.toggleCreateAccount}>Login</a>
-                  </div> :
-                  <div>
-                    <h2>Login</h2>
-                    <form onSubmit={this.login}>
-                    Username: <input onKeyUp={this.getUsername} type="text" placeholder="Username" /><br/>
-                    Password: <input onKeyUp={this.getPassword} type="password" placeholder="Password"/><br/>
-                    <input type="submit" value="Login" />
-                    {
-                      this.state.message ?
-                      <p>Sorry, user not found</p> :
-                      " "
-                    }
-                    </form>
-                    <h2>Don't have an account?</h2>
-                    <a onClick={this.toggleCreateAccount}>Create an account</a>
-                  </div>
-                }
-              </div>
-            }
-
           </main>
 
           <footer>

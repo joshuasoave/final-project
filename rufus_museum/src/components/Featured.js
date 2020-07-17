@@ -4,37 +4,23 @@ import { Link } from "react-router-dom";
 
 class Featured extends React.Component {
   state = {
-    artifacts: [],
     featured: []
   }
 
+  //gets data from the api with the theme of featured and sets that to the state
   componentDidMount = () => {
-    axios.get('/artifacts').then(
+    axios.get('/artifacts/featured').then(
       (response) => {
         this.setState({
-          artifacts:response.data
+          featured:response.data
         })
       }
     )
   }
 
-  //get all the artifacts with type of featured
-  getFeatured = () => {
-    this.state.artifacts.map(
-      (artifact) => {
-        //if the artifact theme is Featured push it into featured so we can use it in the page
-        if(artifact.theme === "Featured"){
-          this.state.featured.push(artifact)
-        }
-      }
-    )
-  }
-
   render() {
-    // console.log(this.state.artifacts);
     return (
       <div>
-      {this.getFeatured()}
         <p>This is the Featured exhibit page</p>
         <ul>
         {
@@ -43,7 +29,7 @@ class Featured extends React.Component {
               return<div key={index}>
                 <p>{artifact.name}</p>
                 <Link to={{
-                  pathname: `/exhibit/${artifact._id}`,
+                  pathname: `/artifacts/exhibit/${artifact._id}`,
                   state: {artifact}
                 }}>
                 <img src={artifact.image}

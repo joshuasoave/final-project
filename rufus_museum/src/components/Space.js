@@ -4,34 +4,23 @@ import { Link } from "react-router-dom";
 
 class Space extends React.Component {
   state = {
-    artifacts: [],
     space: []
   }
 
+    //gets data from the api with the theme of space and sets that to the state
   componentDidMount = () => {
-    axios.get('/artifacts').then(
+    axios.get('/artifacts/space').then(
       (response) => {
         this.setState({
-          artifacts:response.data
+          space:response.data
         })
       }
     )
   }
-  //get all the space type artifacts
-  getSpace = () => {
-    this.state.artifacts.map(
-      (artifact) => {
-        //if the artifact theme is Space push it into the space array so we can use it in the page
-        if(artifact.theme === "Space"){
-          this.state.space.push(artifact)
-        }
-      }
-    )
-  }
+
   render() {
     return (
       <div>
-      {this.getSpace()}
         <p>This is the Space exhibit.</p>
         <ul>
         {
@@ -40,7 +29,7 @@ class Space extends React.Component {
               return<div key={index}>
                 <p>{artifact.name}</p>
                 <Link to={{
-                  pathname: `/exhibit/${artifact._id}`,
+                  pathname: `/artifacts/exhibit/${artifact._id}`,
                   state: {artifact}
                 }}>
                 <img src={artifact.image}
