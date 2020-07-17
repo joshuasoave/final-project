@@ -15,7 +15,7 @@ class UserProfile extends React.Component {
 
   render() {
     //save the functions from component props so we can reuse them
-    const {login, getUsername, getPassword, loggedInUser, createUser, changeNewPassword, changeNewUsername} = this.props;
+    const {login, getUsername, getPassword, loggedInUser, createUser, changeNewPassword, changeNewUsername, message} = this.props;
 
     return (
       <div>
@@ -42,7 +42,7 @@ class UserProfile extends React.Component {
             Password: <input onKeyUp={getPassword} type="password" placeholder="Password"/><br/>
             <input type="submit" value="Login" />
             {
-              this.state.message ?
+              message ?
               <p>Sorry, user not found</p> :
               " "
             }

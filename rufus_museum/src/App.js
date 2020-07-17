@@ -166,6 +166,7 @@ class App extends React.Component {
                   createUser={this.createUser}
                   changeNewPassword={this.changeNewPassword}
                   changeNewUsername={this.changeNewUsername}
+                  message={this.state.message}
                   />  }/>
               </div>
           </main>
