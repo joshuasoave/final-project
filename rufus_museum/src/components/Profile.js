@@ -2,12 +2,59 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class UserProfile extends React.Component {
+  state = {
+    createAccount: false
+  }
+
+  toggleCreateAccount = (event) => {
+    // console.log('clicked');
+    this.setState({
+      createAccount: !this.state.createAccount
+    })
+  }
 
 
   render() {
+    //save the functions from component props so we can reuse them
+    const {login, getUsername, getPassword, currentUser, loggedInUser} = this.props;
+
     return (
       <div>
-        Hello
+      {
+        loggedInUser ? "Logged in"
+        : 
+        <>
+        { this.state.createAccount ?
+          <>
+              <h2>Sign Up</h2>
+              <form onSubmit={this.createUser}>
+                Username: <input type="text" onKeyUp={this.changeNewUsername} placeholder="Username" /><br/>
+                Password: <input type="password" onKeyUp={this.changeNewPassword} placeholder="Password" /><br/>
+                <input type="submit" value="Sign Up" />
+              </form>
+              <h2>Already have an account?</h2>
+                <a href="#" onClick={this.toggleCreateAccount}>Login</a>
+          </>
+          :
+          <>
+            <h2>Login</h2>
+            <form onSubmit={login}>
+            Username: <input onKeyUp={getUsername} type="text" placeholder="Username" /><br/>
+            Password: <input onKeyUp={getPassword} type="password" placeholder="Password"/><br/>
+            <input type="submit" value="Login" />
+            {
+              this.state.message ?
+              <p>Sorry, user not found</p> :
+              " "
+            }
+            </form>
+            <h2>Don't have an account?</h2>
+            <a href="#" onClick={this.toggleCreateAccount}>Create an account</a>
+          </>
+          }
+        </>
+      }
+
       </div>
     )
   }

@@ -21,13 +21,22 @@ class App extends React.Component {
     createAccount: false
   }
 
+
   ////////
   //Check session on pg load
   ////////
   componentDidMount = () => {
+    //get the session data and set the user to that state
     axios.get('/session').then((response) => {
       this.setState({
         loggedInUser: response.data
+      })
+    })
+
+    //get all the artifacts and set them to the state
+    axios.get('/artifacts').then((response) => {
+      this.setState({
+        artifacts: response.data
       })
     })
   }
@@ -80,12 +89,7 @@ class App extends React.Component {
     })
   }
 
-  toggleCreateAccount = (event) => {
-    console.log('clicked');
-    this.setState({
-      createAccount: !this.state.createAccount
-    })
-  }
+
 
   login = (event) => {
     event.preventDefault();
@@ -140,10 +144,8 @@ class App extends React.Component {
               <button onClick={this.logout}>Logout</button> : " "
             }
           </nav>
-          <main>
 
-            {
-              this.state.loggedInUser ?
+          <main>
               <div>
                 <Route path="/" exact component={Home} />
                 <Route path="/about" component={About} />
@@ -157,41 +159,12 @@ class App extends React.Component {
                 <Route path="/event/:id"
                 component={Event}/>
                 <Route path="/profile"
-                component={Profile}/>
+                render={
+                  props => <Profile {...props}
+                  login={this.login}
+                  getUsername={this.getUsername} getPassword={this.getPassword} loggedInUser={this.state.loggedInUser}
+                  />  }/>
               </div>
-              :
-              <div>
-              {
-                  this.state.createAccount ?
-                  <div>
-                    <h2>Sign Up</h2>
-                    <form onSubmit={this.createUser}>
-                      Username: <input type="text" onKeyUp={this.changeNewUsername} placeholder="Username" /><br/>
-                      Password: <input type="password" onKeyUp={this.changeNewPassword} placeholder="Password" /><br/>
-                      <input type="submit" value="Sign Up" />
-                    </form>
-                    <h2>Already have an account?</h2>
-                      <a href="#" onClick={this.toggleCreateAccount}>Login</a>
-                  </div> :
-                  <div>
-                    <h2>Login</h2>
-                    <form onSubmit={this.login}>
-                    Username: <input onKeyUp={this.getUsername} type="text" placeholder="Username" /><br/>
-                    Password: <input onKeyUp={this.getPassword} type="password" placeholder="Password"/><br/>
-                    <input type="submit" value="Login" />
-                    {
-                      this.state.message ?
-                      <p>Sorry, user not found</p> :
-                      " "
-                    }
-                    </form>
-                    <h2>Don't have an account?</h2>
-                    <a href="#" onClick={this.toggleCreateAccount}>Create an account</a>
-                  </div>
-                }
-              </div>
-            }
-
           </main>
 
           <footer>
