@@ -7,6 +7,7 @@ class Featured extends React.Component {
     featured: []
   }
 
+  //gets data from the api with the theme of featured and sets that to the state
   componentDidMount = () => {
     axios.get('/artifacts/featured').then(
       (response) => {
@@ -28,7 +29,7 @@ class Featured extends React.Component {
               return<div key={index}>
                 <p>{artifact.name}</p>
                 <Link to={{
-                  pathname: `/exhibit/${artifact._id}`,
+                  pathname: `/artifacts/exhibit/${artifact._id}`,
                   state: {artifact}
                 }}>
                 <img src={artifact.image}

@@ -153,7 +153,7 @@ class App extends React.Component {
                 <Route path="/surrealism" component={Surrealism} />
                 <Route path="/space" component={Space} />
                 <Route path="/exhibits" component={Exhibits}/>
-                <Route path="/exhibit/:id" component={Exhibit}/>
+                <Route path="/artifacts/exhibit/:id" component={Exhibit}/>
                 <Route path="/event/:id"
                 component={Event}/>
                 <Route path="/profile"

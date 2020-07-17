@@ -7,6 +7,7 @@ class Space extends React.Component {
     space: []
   }
 
+    //gets data from the api with the theme of space and sets that to the state
   componentDidMount = () => {
     axios.get('/artifacts/space').then(
       (response) => {
@@ -28,7 +29,7 @@ class Space extends React.Component {
               return<div key={index}>
                 <p>{artifact.name}</p>
                 <Link to={{
-                  pathname: `/exhibit/${artifact._id}`,
+                  pathname: `/artifacts/exhibit/${artifact._id}`,
                   state: {artifact}
                 }}>
                 <img src={artifact.image}
