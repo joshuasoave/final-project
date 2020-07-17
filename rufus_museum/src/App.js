@@ -23,17 +23,39 @@ class App extends React.Component {
     createAccount: false
   }
 
+  ///////////
+  //Set session data
+  //////////
+  //get the session data and set the user to that state
+  getSession = () => {
+    axios.get('/session').then((response) => {
+      this.setState({
+        loggedInUser: response.data
+      })
+    })
+  }
+
+  ////////////
+  //Get user data
+  ///////////
+  //get the most up to date data on user from db
+  getUser = () => {
+    //if logged in get data
+    if(this.state.loggedInUser) {
+      axios.get(`/users/${this.state.loggedInUser._id}`).then((response) => {
+        this.setState({
+          loggedInUser: response.data
+        })
+      })
+    }
+  }
 
   ////////
   //Check session on pg load
   ////////
   componentDidMount = () => {
     //get the session data and set the user to that state
-    axios.get('/session').then((response) => {
-      this.setState({
-        loggedInUser: response.data
-      })
-    })
+    this.getSession();
   }
 
   ///////////
@@ -121,20 +143,6 @@ class App extends React.Component {
     })
   }
 
-  //////////
-  //Favoriting an artifact
-  //////////
-
-  favoriteArtifact = () => {
-    // console.log(this.props.location.state.artifact);
-    axios.put(`/users/${this.props.location.state.artifact._id}`).then((response) => {
-      console.log(response);
-      this.setState({
-        loggedInUser: response.data
-      })
-    })
-  }
-
 
   render() {
     return (
@@ -167,7 +175,12 @@ class App extends React.Component {
                 <Route path="/surrealism" component={Surrealism} />
                 <Route path="/space" component={Space} />
                 <Route path="/exhibits" component={Exhibits}/>
-                <Route path="/artifacts/exhibit/:id" component={Exhibit}/>
+                <Route path="/artifacts/exhibit/:id" render={
+                  props => <Exhibit {...props}
+                    getUser={this.getUser}
+                    loggedInUser={this.state.loggedInUser}
+                  />
+                }/>
                 <Route path="/event/:id"
                 component={Event}/>
                 <Route path="/profile"
@@ -190,7 +203,7 @@ class App extends React.Component {
               <li><Link to="/exhibits">Exhibits</Link></li>
               <li>Favorites</li>
               <li><Link to={{
-                pathname: "profile"
+                pathname: "/profile"
               }}>Profile</Link></li>
             </ul>
           </footer>
