@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class UserProfile extends React.Component {
   state = {
@@ -16,20 +15,20 @@ class UserProfile extends React.Component {
 
   render() {
     //save the functions from component props so we can reuse them
-    const {login, getUsername, getPassword, currentUser, loggedInUser} = this.props;
+    const {login, getUsername, getPassword, loggedInUser, createUser, changeNewPassword, changeNewUsername} = this.props;
 
     return (
       <div>
       {
         loggedInUser ? "Logged in"
-        : 
+        :
         <>
         { this.state.createAccount ?
           <>
               <h2>Sign Up</h2>
-              <form onSubmit={this.createUser}>
-                Username: <input type="text" onKeyUp={this.changeNewUsername} placeholder="Username" /><br/>
-                Password: <input type="password" onKeyUp={this.changeNewPassword} placeholder="Password" /><br/>
+              <form onSubmit={createUser}>
+                Username: <input type="text" onKeyUp={changeNewUsername} placeholder="Username" /><br/>
+                Password: <input type="password" onKeyUp={changeNewPassword} placeholder="Password" /><br/>
                 <input type="submit" value="Sign Up" />
               </form>
               <h2>Already have an account?</h2>

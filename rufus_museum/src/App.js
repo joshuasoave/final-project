@@ -163,6 +163,9 @@ class App extends React.Component {
                   props => <Profile {...props}
                   login={this.login}
                   getUsername={this.getUsername} getPassword={this.getPassword} loggedInUser={this.state.loggedInUser}
+                  createUser={this.createUser}
+                  changeNewPassword={this.changeNewPassword}
+                  changeNewUsername={this.changeNewUsername}
                   />  }/>
               </div>
           </main>
