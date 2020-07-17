@@ -194,7 +194,11 @@ class App extends React.Component {
                   changeNewUsername={this.changeNewUsername}
                   message={this.state.message}
                   />  }/>
-                  <Route path="/favorites" component={Favorites} />
+                  <Route path="/users/favorites/:id"
+                  render={
+                    props => <Favorites {...props}
+                    loggedInUser={this.state.loggedInUser} getSession={this.getSession}
+                   /> } />
               </div>
           </main>
 
@@ -203,9 +207,13 @@ class App extends React.Component {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/events">Events</Link></li>
               <li><Link to="/exhibits">Exhibits</Link></li>
-              <li><Link to={{
-                pathname: "/favorites"
-              }}>Favorites</Link></li>
+              {
+                this.state.loggedInUser ?
+                <li><Link to={{
+                  pathname: `/users/favorites/${this.state.loggedInUser._id}`}}
+                  >Favorites</Link></li> :
+                " "
+              }
               <li><Link to={{
                 pathname: "/profile"
               }}>Profile</Link></li>
