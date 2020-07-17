@@ -9,19 +9,20 @@ class Exhibit extends React.Component{
   //////////
 
   favoriteArtifact = () => {
-    // console.log(this.props);
-    //check all the items in the users current favorites
-    for(let currentFavs of this.props.loggedInUser.favorites) {
-      console.log(currentFavs);
+    //save the array to this variable so we dont have to keep typing it
+    let currentFavs = this.props.loggedInUser.favorites
+    //loop through the array of users current favs to compare the ids
+    for(let i = 0; i < currentFavs.length; i++) {
+      // console.log(currentFavs[i]._id);
       //if the current artifact is already in their array, unfavorite it. Check all of the current favorites by comparing ids.
-      if(this.props.location.state.artifact._id === currentFavs._id) {
-        console.log('unfavorite')
+      if(this.props.location.state.artifact._id === currentFavs[i]._id) {
+        //function that removes it from favorites array
+        this.removeFavorite(i)
         return null
       }
     }
-    //add to favorites if it is not in the users array already
+    //add to favorites if it is not in the users array already. this function makes an api call to add artifact to the users favorite a
     this.addFavorite();
-    console.log('adding to favs');
   }
 
   ///////
@@ -30,13 +31,24 @@ class Exhibit extends React.Component{
     //this put request calls the database and tells it to update the favroties array by pushing it into the array
   addFavorite = () => {
     axios.put(`/users/exhibit/${this.props.location.state.artifact._id}`).then((response) => {
-      // console.log(response);
+        console.log('adding to favs');
       //update the logged in user on app with new favs in their array
-      this.props.getUser()
+        this.props.getUser();
       // console.log(this.props.loggedInUser);
     })
   }
 
+  ///////
+  //unfavorite
+  ////////
+  removeFavorite = (index) => {
+    //pass in the index in the url so we can use it in the db to splice
+    axios.put(`/users/exhibit/remove/${index}`).then((response) => {
+      console.log('removing at index' + index);
+        //update the logged in user on app with new favs in their array
+      this.props.getUser();
+    })
+  }
 
 
   render() {
