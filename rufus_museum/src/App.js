@@ -12,6 +12,7 @@ import Exhibit from './components/Exhibit.js';
 import Events from './components/Events.js';
 import Event from './components/Event.js';
 import Profile from './components/Profile.js';
+import Favorites from './components/Favorites.js';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -193,6 +194,11 @@ class App extends React.Component {
                   changeNewUsername={this.changeNewUsername}
                   message={this.state.message}
                   />  }/>
+                  <Route path="/users/favorites/:id"
+                  render={
+                    props => <Favorites {...props}
+                    loggedInUser={this.state.loggedInUser} getSession={this.getSession}
+                   /> } />
               </div>
           </main>
 
@@ -201,7 +207,13 @@ class App extends React.Component {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/events">Events</Link></li>
               <li><Link to="/exhibits">Exhibits</Link></li>
-              <li>Favorites</li>
+              {
+                this.state.loggedInUser ?
+                <li><Link to={{
+                  pathname: `/users/favorites/${this.state.loggedInUser._id}`}}
+                  >Favorites</Link></li> :
+                " "
+              }
               <li><Link to={{
                 pathname: "/profile"
               }}>Profile</Link></li>
