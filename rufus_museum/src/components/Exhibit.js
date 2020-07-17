@@ -4,17 +4,22 @@ import axios from 'axios';
 
 class Exhibit extends React.Component{
 
-  favoriteExhibit = () => {
+  //////////
+  //Favoriting an artifact
+  //////////
+
+  favoriteArtifact = () => {
     // console.log(this.props.location.state.artifact);
-    axios.put(`/users/${this.props.location.state.artifact._id}`).then((response) => {
+    axios.put(`/users/exhibit/${this.props.location.state.artifact._id}`).then((response) => {
       console.log(response);
-      this.setState({
-        loggedInUser: response.data
-      })
+      //update the logged in user on app with new favs in their array
+      this.props.getUser()
     })
   }
 
+
   render() {
+
     //save prop location state so we dont have to keep typing that out. This is the artifact that the user clicked on from previous page
     let artifact = this.props.location.state.artifact;
     // console.log(this.props);
@@ -25,7 +30,7 @@ class Exhibit extends React.Component{
     }}>
     <button>Back</button>
     </Link>
-    <button onClick={this.favoriteExhibit}>Fav</button>
+    <button onClick={this.favoriteArtifact}>Fav</button>
     <h1>{artifact.name}</h1>
     <img src={artifact.image} alt={artifact.name} />
     <p>{artifact.creator}</p>

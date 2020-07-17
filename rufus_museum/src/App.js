@@ -23,17 +23,25 @@ class App extends React.Component {
     createAccount: false
   }
 
+  ///////////
+  //Set current user
+  //////////
+  //get the session data and set the user to that state
+  getUser = () => {
+    axios.get('/session').then((response) => {
+      this.setState({
+        loggedInUser: response.data
+      })
+    })
+  }
+
 
   ////////
   //Check session on pg load
   ////////
   componentDidMount = () => {
     //get the session data and set the user to that state
-    axios.get('/session').then((response) => {
-      this.setState({
-        loggedInUser: response.data
-      })
-    })
+    this.getUser();
   }
 
   ///////////
@@ -121,20 +129,6 @@ class App extends React.Component {
     })
   }
 
-  //////////
-  //Favoriting an artifact
-  //////////
-
-  favoriteArtifact = () => {
-    // console.log(this.props.location.state.artifact);
-    axios.put(`/users/${this.props.location.state.artifact._id}`).then((response) => {
-      console.log(response);
-      this.setState({
-        loggedInUser: response.data
-      })
-    })
-  }
-
 
   render() {
     return (
@@ -167,7 +161,11 @@ class App extends React.Component {
                 <Route path="/surrealism" component={Surrealism} />
                 <Route path="/space" component={Space} />
                 <Route path="/exhibits" component={Exhibits}/>
-                <Route path="/artifacts/exhibit/:id" component={Exhibit}/>
+                <Route path="/artifacts/exhibit/:id" render={
+                  props => <Exhibit {...props}
+                    getUser={this.getUser}
+                  />
+                }/>
                 <Route path="/event/:id"
                 component={Event}/>
                 <Route path="/profile"
