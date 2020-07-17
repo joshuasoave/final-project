@@ -24,10 +24,10 @@ class App extends React.Component {
   }
 
   ///////////
-  //Set current user
+  //Set session data
   //////////
   //get the session data and set the user to that state
-  getUser = () => {
+  getSession = () => {
     axios.get('/session').then((response) => {
       this.setState({
         loggedInUser: response.data
@@ -35,13 +35,25 @@ class App extends React.Component {
     })
   }
 
+  ////////////
+  //Get user data
+  ///////////
+  //get the most up to date data on user from db
+  getUser = () => {
+    axios.get(`/users/${this.state.loggedInUser._id}`).then((response) => {
+      console.log(this.state.loggedInUser);
+      this.setState({
+        loggedInUser: response.data
+      })
+    })
+  }
 
   ////////
   //Check session on pg load
   ////////
   componentDidMount = () => {
     //get the session data and set the user to that state
-    this.getUser();
+    this.getSession();
   }
 
   ///////////
@@ -164,6 +176,7 @@ class App extends React.Component {
                 <Route path="/artifacts/exhibit/:id" render={
                   props => <Exhibit {...props}
                     getUser={this.getUser}
+                    loggedInUser={this.state.loggedInUser}
                   />
                 }/>
                 <Route path="/event/:id"
