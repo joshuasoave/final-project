@@ -190,7 +190,7 @@ class App extends React.Component {
               <li><Link to="/exhibits">Exhibits</Link></li>
               <li>Favorites</li>
               <li><Link to={{
-                pathname: "profile"
+                pathname: "/profile"
               }}>Profile</Link></li>
             </ul>
           </footer>
