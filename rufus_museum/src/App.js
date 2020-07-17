@@ -15,6 +15,8 @@ import Profile from './components/Profile.js';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+//https://reactrouter.com/web/api/Route/render-func
+
 class App extends React.Component {
   state = {
     isLoggedIn: false,
@@ -30,13 +32,6 @@ class App extends React.Component {
     axios.get('/session').then((response) => {
       this.setState({
         loggedInUser: response.data
-      })
-    })
-
-    //get all the artifacts and set them to the state
-    axios.get('/artifacts').then((response) => {
-      this.setState({
-        artifacts: response.data
       })
     })
   }
@@ -151,7 +146,10 @@ class App extends React.Component {
                 <Route path="/about" component={About} />
                 <Route path="/events" component={Events} />
                 <Route path="/featured" component={Featured}/>
-                <Route path="/egypt" component={Egypt} />
+                <Route path="/egypt"
+                render={
+                  props => <Egypt artifacts={this.state.artifacts}/>
+                } />
                 <Route path="/surrealism" component={Surrealism} />
                 <Route path="/space" component={Space} />
                 <Route path="/exhibits" component={Exhibits}/>

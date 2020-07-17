@@ -4,34 +4,22 @@ import { Link } from "react-router-dom";
 
 class Surrealism extends React.Component {
   state = {
-    artifacts: [],
     surrealism: []
   }
 
   componentDidMount = () => {
-    axios.get('/artifacts').then(
+    axios.get('/artifacts/surrealism').then(
       (response) => {
         this.setState({
-          artifacts:response.data
+          surrealism:response.data
         })
       }
     )
   }
-  //get all the Surrealism artifacts
-  getSurrealism = (array) => {
-    this.state.artifacts.map(
-      (artifact) => {
-        //if the theme is Surrealism push it into the syrrealism array so we can use it on the page
-        if(artifact.theme === "Surrealism"){
-          this.state.surrealism.push(artifact)
-        }
-      }
-    )
-  }
+
   render() {
     return (
       <div>
-      {this.getSurrealism()}
         <p>This is the Surrealism exhibit.</p>
         <ul>
         {
