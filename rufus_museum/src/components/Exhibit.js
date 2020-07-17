@@ -10,15 +10,16 @@ class Exhibit extends React.Component{
 
   favoriteArtifact = () => {
     // console.log(this.props);
-    //get most up to date info
-    this.addFavorite();
     //check all the items in the users current favorites
     for(let currentFavs of this.props.loggedInUser.favorites) {
+      console.log(currentFavs);
       //if the current artifact is already in their array, unfavorite it. Check all of the current favorites by comparing ids.
       if(this.props.location.state.artifact._id === currentFavs._id) {
         console.log('unfavorite')
+        return null
       }
     }
+    console.log('adding to favs');
   }
 
   ///////
@@ -27,10 +28,10 @@ class Exhibit extends React.Component{
     //this put request calls the database and tells it to update the favroties array by pushing it into the array
   addFavorite = () => {
     axios.put(`/users/exhibit/${this.props.location.state.artifact._id}`).then((response) => {
-      console.log(response);
+      // console.log(response);
       //update the logged in user on app with new favs in their array
       this.props.getUser()
-      console.log(this.props.loggedInUser);
+      // console.log(this.props.loggedInUser);
     })
   }
 
@@ -38,6 +39,8 @@ class Exhibit extends React.Component{
 
   render() {
     // console.log(this.props);
+    //get most up to date info
+    this.props.getUser()
     //save prop location state so we dont have to keep typing that out. This is the artifact that the user clicked on from previous page
     let artifact = this.props.location.state.artifact;
     // console.log(this.props);
