@@ -12,6 +12,7 @@ import Exhibit from './components/Exhibit.js';
 import Events from './components/Events.js';
 import Event from './components/Event.js';
 import Profile from './components/Profile.js';
+import Favorites from './components/Favorites.js';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -193,6 +194,7 @@ class App extends React.Component {
                   changeNewUsername={this.changeNewUsername}
                   message={this.state.message}
                   />  }/>
+                  <Route path="/favorites" component={Favorites} />
               </div>
           </main>
 
@@ -201,7 +203,9 @@ class App extends React.Component {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/events">Events</Link></li>
               <li><Link to="/exhibits">Exhibits</Link></li>
-              <li>Favorites</li>
+              <li><Link to={{
+                pathname: "/favorites"
+              }}>Favorites</Link></li>
               <li><Link to={{
                 pathname: "/profile"
               }}>Profile</Link></li>
