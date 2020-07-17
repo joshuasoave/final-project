@@ -41,7 +41,6 @@ class App extends React.Component {
   //get the most up to date data on user from db
   getUser = () => {
     axios.get(`/users/${this.state.loggedInUser._id}`).then((response) => {
-      console.log(this.state.loggedInUser);
       this.setState({
         loggedInUser: response.data
       })

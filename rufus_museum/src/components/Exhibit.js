@@ -9,7 +9,9 @@ class Exhibit extends React.Component{
   //////////
 
   favoriteArtifact = () => {
-    this.addFavorite()
+    // console.log(this.props);
+    //get most up to date info
+    this.addFavorite();
     //check all the items in the users current favorites
     for(let currentFavs of this.props.loggedInUser.favorites) {
       //if the current artifact is already in their array, unfavorite it. Check all of the current favorites by comparing ids.
@@ -25,9 +27,10 @@ class Exhibit extends React.Component{
     //this put request calls the database and tells it to update the favroties array by pushing it into the array
   addFavorite = () => {
     axios.put(`/users/exhibit/${this.props.location.state.artifact._id}`).then((response) => {
-      // console.log(response);
+      console.log(response);
       //update the logged in user on app with new favs in their array
       this.props.getUser()
+      console.log(this.props.loggedInUser);
     })
   }
 
