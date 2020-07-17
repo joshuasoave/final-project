@@ -19,6 +19,8 @@ class Exhibit extends React.Component{
         return null
       }
     }
+    //add to favorites if it is not in the users array already
+    this.addFavorite();
     console.log('adding to favs');
   }
 
