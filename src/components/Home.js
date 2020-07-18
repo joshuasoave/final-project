@@ -8,25 +8,25 @@ class Home extends React.Component {
         <h4>This is the home page</h4>
         <ul>
           <li>
-            <div id="featuredNavImg" className="homeNavContainer">
-              <Link to="/featured">
+            <Link to="/featured">
+              <div id="featuredNavImg" className="homeNavContainer">
                 <p className="img-text">Featured Exhibit</p>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </li>
           <li>
-            <div id="ourExhibits" className="homeNavContainer">
-              <Link to="/exhibits">
+            <Link to="/exhibits">
+              <div id="ourExhibits" className="homeNavContainer">
                 <p className="img-text">Our Exhibitions</p>
-              </Link>
-            </div>
+                </div>
+            </Link>
           </li>
           <li>
-            <div id="currentEvents" className="homeNavContainer">
-              <Link to="/events">
-              <p className="img-text">Current Events</p>
-              </Link>
-            </div>
+            <Link to="/events">
+              <div id="currentEvents" className="homeNavContainer">
+                <p className="img-text">Current Events</p>
+              </div>
+            </Link>
           </li>
         </ul>
       </div>
