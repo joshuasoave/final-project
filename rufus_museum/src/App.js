@@ -13,7 +13,6 @@ import Events from './components/Events.js';
 import Event from './components/Event.js';
 import Profile from './components/Profile.js';
 import Favorites from './components/Favorites.js';
-import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 //https://reactrouter.com/web/api/Route/render-func
