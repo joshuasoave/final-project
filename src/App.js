@@ -203,7 +203,7 @@ class App extends React.Component {
               </div>
           </main>
 
-          <footer className="page-footer">
+          <footer className="pageFooter">
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/events">Events</Link></li>

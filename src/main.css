@@ -91,21 +91,26 @@
 /*//////*/
 /* FOOTER  */
 /*//////*/
-.page-footer {
+footer {
+  height: 80px;
+}
+
+.pageFooter {
   position: relative;
   background: black;
   display: flex;
   justify-content: center;
 }
 
-.page-footer ul {
+.pageFooter ul {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 }
 
-.page-footer a {
+.pageFooter a {
   color: white;
   text-decoration: none;
 }
