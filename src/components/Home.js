@@ -10,21 +10,24 @@ class Home extends React.Component {
           <li>
             <Link to="/featured">
               <div id="featuredNavImg" className="homeNavContainer">
-                <p className="img-text">Featured Exhibit</p>
+                <p className="img-text">Featured Exhibit
+                </p>
               </div>
             </Link>
           </li>
           <li>
             <Link to="/exhibits">
               <div id="ourExhibits" className="homeNavContainer">
-                <p className="img-text">Our Exhibitions</p>
+                <p className="img-text">Our Exhibitions
+                </p>
                 </div>
             </Link>
           </li>
           <li>
             <Link to="/events">
               <div id="currentEvents" className="homeNavContainer">
-                <p className="img-text">Current Events</p>
+                <p className="img-text">Current Events
+                </p>
               </div>
             </Link>
           </li>
