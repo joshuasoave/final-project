@@ -22,17 +22,17 @@ class Egypt extends React.Component {
     return (
       <div>
         <p>This is the Egypt page.</p>
-        <ul>
+        <ul className="allExhibits">
         {
           this.state.egypt.map (
             (artifact, index) => {
-              return<div key={index}>
-                <p>{artifact.name}</p>
+              return<div key={index} className="exhibitNavContainer">
                 <Link to={{
                   pathname: `/artifacts/exhibit/${artifact._id}`,
                   state: {artifact}
                 }}>
                   <img src={artifact.image} alt={artifact.name}/>
+                  <p>{artifact.name}</p>
                 </Link>
               </div>
             }
