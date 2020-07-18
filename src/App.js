@@ -148,8 +148,10 @@ class App extends React.Component {
     return (
       <Router>
         <div className="container">
+          <header>
+           <Header />
+          </header>
           <nav>
-            <Header />
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/events">Events</Link></li>
@@ -162,7 +164,7 @@ class App extends React.Component {
             }
           </nav>
 
-          <main>
+          <main className="main">
               <div>
                 <Route path="/" exact component={Home} />
                 <Route path="/about" component={About} />
@@ -201,7 +203,7 @@ class App extends React.Component {
               </div>
           </main>
 
-          <footer>
+          <footer className="page-footer">
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/events">Events</Link></li>
