@@ -25,11 +25,11 @@ class Favorites extends React.Component{
     return (
       <div>
         This is the favs page. dgdgg
-        <ul>
+        <ul className="allExhibits">
         {
           this.state.favorites.map (
             (artifact, index) => {
-              return<div key={index}>
+              return<div key={index} className="exhibitNavContainer">
                 <p>{artifact.name}</p>
                 <Link to={{
                   pathname: `/artifacts/exhibit/${artifact._id}`,
