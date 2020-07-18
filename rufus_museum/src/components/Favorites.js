@@ -1,30 +1,33 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-class Egypt extends React.Component {
+
+class Favorites extends React.Component{
   state = {
-    egypt: []
+    favorites: []
   }
 
-  //gets data from the api with the theme of egypt and sets that to the state
   componentDidMount = () => {
-    axios.get('/artifacts/egypt').then(
-      (response) => {
-        this.setState({
-          egypt:response.data
-        })
-      }
-    )
+    //this get request asks the database for all favorites of this user
+    axios.get(this.props.location.pathname).then((response) => {
+      // console.log(response.data.favorites);
+      this.setState({
+        favorites: response.data.favorites
+      })
+    })
   }
+
 
   render() {
+    //to check the favorites of logged in user
+
     return (
       <div>
-        <p>This is the Egypt page.</p>
+        This is the favs page. dgdgg
         <ul>
         {
-          this.state.egypt.map (
+          this.state.favorites.map (
             (artifact, index) => {
               return<div key={index}>
                 <p>{artifact.name}</p>
@@ -44,4 +47,4 @@ class Egypt extends React.Component {
   }
 }
 
-export default Egypt;
+export default Favorites;

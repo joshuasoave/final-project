@@ -11,15 +11,88 @@ import Exhibits from './components/Exhibits.js';
 import Exhibit from './components/Exhibit.js';
 import Events from './components/Events.js';
 import Event from './components/Event.js';
-import CreateAccount from './components/CreateAccount.js';
 import Profile from './components/Profile.js';
-import './App.css';
+import Favorites from './components/Favorites.js';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+//https://reactrouter.com/web/api/Route/render-func
 
 class App extends React.Component {
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    createAccount: false
   }
+
+  ///////////
+  //Set session data
+  //////////
+  //get the session data and set the user to that state
+  getSession = () => {
+    axios.get('/session').then((response) => {
+      this.setState({
+        loggedInUser: response.data
+      })
+    })
+  }
+
+  ////////////
+  //Get user data
+  ///////////
+  //get the most up to date data on user from db
+  getUser = () => {
+    //if logged in get data
+    if(this.state.loggedInUser) {
+      axios.get(`/users/${this.state.loggedInUser._id}`).then((response) => {
+        this.setState({
+          loggedInUser: response.data
+        })
+      })
+    }
+  }
+
+  ////////
+  //Check session on pg load
+  ////////
+  componentDidMount = () => {
+    //get the session data and set the user to that state
+    this.getSession();
+  }
+
+  ///////////
+  //Create user
+  //////////
+
+  changeNewPassword = (event) => {
+    this.setState({
+      newPassword: event.target.value
+    })
+  }
+
+  changeNewUsername = (event) => {
+    this.setState({
+      newUsername: event.target.value
+    })
+  }
+
+  createUser = (event) => {
+    event.preventDefault();
+    axios.post(
+      '/users',
+      {
+        username: this.state.newUsername,
+        password: this.state.newPassword
+      }
+    ).then((response) => {
+      // console.log(response.data);
+        this.setState({
+          loggedInUser: response.data,
+        })
+    })
+  }
+
+  ////////////
+  //Login
+  ///////////
 
   getUsername = (event) => {
     this.setState({
@@ -33,6 +106,8 @@ class App extends React.Component {
     })
   }
 
+
+
   login = (event) => {
     event.preventDefault();
     axios.post(
@@ -42,12 +117,29 @@ class App extends React.Component {
         password: this.state.loginPassword
       }
     ).then((response) => {
-      console.log(response.data);
-      this.setState({
-        loggedInUser: response.data,
-        isLoggedIn: true
-      })
+      // console.log(response.data);
+      if(response.data.username) {
+        this.setState({
+          loggedInUser: response.data
+        })
+      } else {
+        this.setState({
+          message: response.data
+        })
+      }
       // console.log(this.state.loggedInUser);
+    })
+  }
+
+  //////////////
+  //Logout
+  /////////////
+  logout = (event) => {
+    axios.delete('/session').then((response) => {
+      this.setState({
+        //set the logged in user to null so all of the ternary operators come back false
+        loggedInUser: null
+      })
     })
   }
 
@@ -64,54 +156,69 @@ class App extends React.Component {
               <li><Link to="/exhibits">Exhibits</Link></li>
               <li><Link to="/about">About</Link></li>
             </ul>
-          </nav>
-          <main>
-
             {
-              this.state.loggedInUser ?
+            this.state.loggedInUser ?
+              <button onClick={this.logout}>Logout</button> : " "
+            }
+          </nav>
+
+          <main>
               <div>
                 <Route path="/" exact component={Home} />
                 <Route path="/about" component={About} />
                 <Route path="/events" component={Events} />
                 <Route path="/featured" component={Featured}/>
-                <Route path="/egypt" component={Egypt} />
+                <Route path="/egypt"
+                render={
+                  props => <Egypt artifacts={this.state.artifacts}/>
+                } />
                 <Route path="/surrealism" component={Surrealism} />
                 <Route path="/space" component={Space} />
                 <Route path="/exhibits" component={Exhibits}/>
-                <Route path="/exhibit/:id" component={Exhibit}/>
+                <Route path="/artifacts/exhibit/:id" render={
+                  props => <Exhibit {...props}
+                    getUser={this.getUser}
+                    loggedInUser={this.state.loggedInUser}
+                  />
+                }/>
                 <Route path="/event/:id"
                 component={Event}/>
                 <Route path="/profile"
-                component={Profile}/>
-                <Route path="/createAccount" component={CreateAccount}/>
+                render={
+                  props => <Profile {...props}
+                  login={this.login}
+                  getUsername={this.getUsername} getPassword={this.getPassword} loggedInUser={this.state.loggedInUser}
+                  createUser={this.createUser}
+                  changeNewPassword={this.changeNewPassword}
+                  changeNewUsername={this.changeNewUsername}
+                  message={this.state.message}
+                  />  }/>
+                  <Route path="/users/favorites/:id"
+                  render={
+                    props => <Favorites {...props}
+                    loggedInUser={this.state.loggedInUser} getSession={this.getSession}
+                   /> } />
               </div>
-              :
-
-              <div>
-                <h2>Login</h2>
-                <form onSubmit={this.login}>
-                Username: <input onKeyUp={this.getUsername} type="text" /><br/>
-                Password: <input onKeyUp={this.getPassword} type="password" /><br/>
-                <input type="submit" value="Login" />
-                </form>
-                <h2>Don't have an account?</h2>
-                <Link to="/createAccount">Create an account</Link>
-              </div>
-            }
-
-
           </main>
+
           <footer>
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/events">Events</Link></li>
               <li><Link to="/exhibits">Exhibits</Link></li>
-              <li>Favorites</li>
+              {
+                this.state.loggedInUser ?
+                <li><Link to={{
+                  pathname: `/users/favorites/${this.state.loggedInUser._id}`}}
+                  >Favorites</Link></li> :
+                " "
+              }
               <li><Link to={{
-                pathname: "profile"
+                pathname: "/profile"
               }}>Profile</Link></li>
             </ul>
           </footer>
+
         </div>
       </Router>
     )
