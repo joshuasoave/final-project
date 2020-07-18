@@ -32,7 +32,7 @@ class Featured extends React.Component {
                   state: {artifact}
                 }}>
                   <img src={artifact.image}
-                 alt={artifact.name}/>
+                  alt={artifact.name}/>
                   <p>{artifact.name}</p>
                 </Link>
               </div>
