@@ -7,9 +7,16 @@ class Egypt extends React.Component {
     egypt: []
   }
 
+  /////////
+  //call database
+  ////////
+  callDatabase = () => {
+    return "https://floating-bayou-96095.herokuapp.com"
+  }
+
   //gets data from the api with the theme of egypt and sets that to the state
   componentDidMount = () => {
-    axios.get('/artifacts/egypt').then(
+    axios.get(`${this.callDatabase()}/artifacts/egypt`).then(
       (response) => {
         this.setState({
           egypt:response.data

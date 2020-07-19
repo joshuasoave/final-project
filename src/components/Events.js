@@ -7,9 +7,17 @@ class Events extends React.Component {
   state = {
     events: []
   }
+
+  /////////
+  //call database
+  ////////
+  callDatabase = () => {
+    return "https://floating-bayou-96095.herokuapp.com"
+  }
+
   //get all the events
   componentDidMount = () => {
-    axios.get('/events').then(
+    axios.get(`${this.callDatabase()}/events`).then(
       (response) => {
         this.setState({
           events:response.data

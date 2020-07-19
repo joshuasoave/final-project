@@ -7,9 +7,16 @@ class Surrealism extends React.Component {
     surrealism: []
   }
 
+  /////////
+  //call database
+  ////////
+  callDatabase = () => {
+    return "https://floating-bayou-96095.herokuapp.com"
+  }
+
     //gets data from the api with the theme of surrealism and sets that to the state
   componentDidMount = () => {
-    axios.get('/artifacts/surrealism').then(
+    axios.get(`${this.callDatabase()}/artifacts/surrealism`).then(
       (response) => {
         this.setState({
           surrealism:response.data

@@ -7,9 +7,16 @@ class Featured extends React.Component {
     featured: []
   }
 
+  /////////
+  //call database
+  ////////
+  callDatabase = () => {
+    return "https://floating-bayou-96095.herokuapp.com"
+  }
+
   //gets data from the api with the theme of featured and sets that to the state
   componentDidMount = () => {
-    axios.get('/artifacts/featured').then(
+    axios.get(`${this.callDatabase()}/artifacts/featured`).then(
       (response) => {
         this.setState({
           featured:response.data
