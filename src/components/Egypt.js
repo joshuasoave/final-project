@@ -7,9 +7,16 @@ class Egypt extends React.Component {
     egypt: []
   }
 
+  /////////
+  //call database
+  ////////
+  callDatabase = () => {
+    return "https://floating-bayou-96095.herokuapp.com"
+  }
+
   //gets data from the api with the theme of egypt and sets that to the state
   componentDidMount = () => {
-    axios.get('/artifacts/egypt').then(
+    axios.get(`${this.callDatabase()}/artifacts/egypt`).then(
       (response) => {
         this.setState({
           egypt:response.data
@@ -22,17 +29,17 @@ class Egypt extends React.Component {
     return (
       <div>
         <p>This is the Egypt page.</p>
-        <ul>
+        <ul className="allExhibits">
         {
           this.state.egypt.map (
             (artifact, index) => {
-              return<div key={index}>
-                <p>{artifact.name}</p>
+              return<div key={index} className="exhibitNavContainer">
                 <Link to={{
                   pathname: `/artifacts/exhibit/${artifact._id}`,
                   state: {artifact}
                 }}>
                   <img src={artifact.image} alt={artifact.name}/>
+                  <p>{artifact.name}</p>
                 </Link>
               </div>
             }
