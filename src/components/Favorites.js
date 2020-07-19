@@ -8,9 +8,16 @@ class Favorites extends React.Component{
     favorites: []
   }
 
+  /////////
+  //call database
+  ////////
+  callDatabase = () => {
+    return "https://floating-bayou-96095.herokuapp.com"
+  }
+
   componentDidMount = () => {
     //this get request asks the database for all favorites of this user
-    axios.get(this.props.location.pathname).then((response) => {
+    axios.get(`${this.callDatabase()}/${this.props.location.pathname}`).then((response) => {
       // console.log(response.data.favorites);
       this.setState({
         favorites: response.data.favorites
@@ -25,11 +32,11 @@ class Favorites extends React.Component{
     return (
       <div>
         This is the favs page. dgdgg
-        <ul>
+        <ul className="allExhibits">
         {
           this.state.favorites.map (
             (artifact, index) => {
-              return<div key={index}>
+              return<div key={index} className="exhibitNavContainer">
                 <p>{artifact.name}</p>
                 <Link to={{
                   pathname: `/artifacts/exhibit/${artifact._id}`,

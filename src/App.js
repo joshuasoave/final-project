@@ -23,12 +23,19 @@ class App extends React.Component {
     createAccount: false
   }
 
+  /////////
+  //call database
+  ////////
+  callDatabase = () => {
+    return "https://floating-bayou-96095.herokuapp.com"
+  }
+
   ///////////
   //Set session data
   //////////
   //get the session data and set the user to that state
   getSession = () => {
-    axios.get('/session').then((response) => {
+    axios.get(`${this.callDatabase()}/session`).then((response) => {
       this.setState({
         loggedInUser: response.data
       })
@@ -42,7 +49,7 @@ class App extends React.Component {
   getUser = () => {
     //if logged in get data
     if(this.state.loggedInUser) {
-      axios.get(`/users/${this.state.loggedInUser._id}`).then((response) => {
+      axios.get(`${this.callDatabase()}/users/${this.state.loggedInUser._id}`).then((response) => {
         this.setState({
           loggedInUser: response.data
         })
@@ -77,7 +84,7 @@ class App extends React.Component {
   createUser = (event) => {
     event.preventDefault();
     axios.post(
-      '/users',
+      `${this.callDatabase()}/users`,
       {
         username: this.state.newUsername,
         password: this.state.newPassword
@@ -111,7 +118,7 @@ class App extends React.Component {
   login = (event) => {
     event.preventDefault();
     axios.post(
-      '/session',
+      `${this.callDatabase()}/session`,
       {
         username: this.state.loginUsername,
         password: this.state.loginPassword
@@ -135,7 +142,7 @@ class App extends React.Component {
   //Logout
   /////////////
   logout = (event) => {
-    axios.delete('/session').then((response) => {
+    axios.delete(`${this.callDatabase()}/session`).then((response) => {
       this.setState({
         //set the logged in user to null so all of the ternary operators come back false
         loggedInUser: null
@@ -148,8 +155,10 @@ class App extends React.Component {
     return (
       <Router>
         <div className="container">
+          <header>
+           <Header />
+          </header>
           <nav>
-            <Header />
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/events">Events</Link></li>
@@ -162,7 +171,7 @@ class App extends React.Component {
             }
           </nav>
 
-          <main>
+          <main className="main">
               <div>
                 <Route path="/" exact component={Home} />
                 <Route path="/about" component={About} />
@@ -201,7 +210,7 @@ class App extends React.Component {
               </div>
           </main>
 
-          <footer>
+          <footer className="pageFooter">
             <ul>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/events">Events</Link></li>

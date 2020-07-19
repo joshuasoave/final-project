@@ -1,0 +1,222 @@
+* {
+  /* border: 1px solid gold; */
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+/* MOBILE STYLE */
+body {
+  background: black;
+}
+
+/*//////*/
+/* HEADER */
+/*//////*/
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+/*//////*/
+/* NAV */
+/*//////*/
+
+/*//////*/
+/* MAIN */
+/*//////*/
+
+/* Home page nav */
+.homeNavigation {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.homeNavigation ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.homeNavigation li {
+  list-style: none;
+}
+
+.homeNavContainer {
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+#ourExhibits {
+  background-image: url("https://i.imgur.com/2IwffvO.jpg");
+}
+
+#featuredNavImg {
+  background-image: url("https://i.imgur.com/SO1CULX.jpg");
+}
+
+#currentEvents {
+  background-image: url("https://i.imgur.com/kA1JyAb.jpg");
+}
+
+.img-text {
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  border: 5px solid white;
+  border-bottom: 0;
+  border-right: 0;
+  margin-left: 30%;
+  padding-right: 50px;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.homeNavigation a, {
+  text-decoration: none;
+}
+
+/* Exhibits Nav Page  */
+
+.exhibitsNavPage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.exhibitNavImg {
+  width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+#featuredExhibitsPageImg {
+  background-image: url("https://i.imgur.com/cUtjOvW.jpg");
+}
+
+#egyptExhibitsPageImg {
+  background-image: url("https://i.imgur.com/VBtGgr9.jpg");
+}
+
+#surrealismExhibitsPageImg {
+  background-image: url("https://i.imgur.com/2IwffvO.jpg");
+}
+
+#spaceExhibitsPageImg {
+  background-image: url("https://i.imgur.com/YVRBeSV.jpg");
+}
+
+/* Each Themed Exhibit Home Page */
+.exhibits {
+  width: 100%;
+}
+
+.allExhibits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+
+.exhibitNavContainer {
+  height: 200px;
+  width: 200px;
+  margin: 3%;
+}
+
+.exhibitNavContainer img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 3%;
+}
+
+.exhibitNavContainer a {
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Event nav page */
+
+.eventsNavPage {
+  width: 100%;
+}
+
+.eventsNavPage a {
+  text-decoration: none;
+}
+
+.eventsNavContainer {
+  width: 100%;
+  display: flex;
+}
+
+.eventImgContainer img {
+  height: 125px;
+  width: 125px;
+  object-fit: cover;
+  border-radius: 5%;
+  margin: 1em;
+}
+
+.eventInfo {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 130px;
+  overflow: hidden;
+}
+
+.eventInfo h3 {
+  margin-top: 1em;
+  font-size: 20px;
+}
+
+.eventInfo p {
+  margin-top: 1em;
+  margin-bottom: .5em;
+  width: 80%;
+}
+
+/*//////*/
+/* FOOTER  */
+/*//////*/
+footer {
+  margin-top: 1em;
+  height: 80px;
+}
+
+.pageFooter {
+  position: sticky;
+  background: black;
+  display: flex;
+  justify-content: center;
+}
+
+.pageFooter ul {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.pageFooter a {
+  color: white;
+  text-decoration: none;
+}
+
+/* DESKTOP  */
