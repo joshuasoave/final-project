@@ -7,18 +7,22 @@ class Event extends React.Component {
       //save prop location state so we dont have to keep typing that out. This is the event that the user clicked on from previous page
       let currentEvent = this.props.location.state.eachEvent;
     return (
-      <div>
+      <div className="eventShow">
         <p>This is the event description page</p>
         <Link to="/events"><button>Back</button></Link>
         <br/>
-        <img src={currentEvent.image} alt={currentEvent.name}/>
-        <h1>{currentEvent.title}</h1>
-        <h4>Price:</h4>
-        <p>{currentEvent.price}</p>
-        <h4>Location:</h4>
-        <p>{currentEvent.location}</p>
-        <h4>Description:</h4>
-        <p>{currentEvent.description}</p>
+        <div className="eventShowImg">
+          <img src={currentEvent.image} alt={currentEvent.name}/>
+        </div>
+        <div className="eventShowInfo">
+          <h1>{currentEvent.title}</h1>
+          <p>{currentEvent.date} - {currentEvent.time}</p>
+          <h4>Price:</h4>
+          <p>{currentEvent.price}</p>
+          <h4>Location:</h4>
+          <p>{currentEvent.location}</p>
+          <p id="eventDescription">{currentEvent.description}</p>
+        </div>
       </div>
     )
   }

@@ -5,6 +5,8 @@
   color: white;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+
 /* MOBILE STYLE */
 body {
   background: black;
@@ -152,6 +154,7 @@ body {
 
 .eventsNavPage {
   width: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .eventsNavPage a {
@@ -164,8 +167,8 @@ body {
 }
 
 .eventImgContainer img {
-  height: 125px;
-  width: 125px;
+  height: 110px;
+  width: 110px;
   object-fit: cover;
   border-radius: 5%;
   margin: 1em;
@@ -180,14 +183,52 @@ body {
 }
 
 .eventInfo h3 {
-  margin-top: 1em;
-  font-size: 20px;
+  margin-top: .7em;
+  font-size: 18px;
 }
 
 .eventInfo p {
   margin-top: 1em;
-  margin-bottom: .5em;
+  font-size: 16px;
+  color: grey;
   width: 80%;
+}
+
+/* Event display page  */
+.eventShow {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.eventShowImg {
+  overflow: hidden;
+  height: 400px;
+}
+
+.eventShowInfo {
+  margin-left: 1.5em;
+  width: 85%;
+}
+
+.eventShowInfo h1 {
+  font-size: 26px;
+  margin-top: .5em;
+}
+
+.eventShowInfo h4 {
+  font-size: 22px;
+}
+
+.eventShowInfo p {
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.eventShowInfo h4, #eventDescription {
+  margin-top: 1em;
+}
+
+#eventDescription {
+  line-height: 1.3em;
 }
 
 /*//////*/
