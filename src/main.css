@@ -423,6 +423,32 @@ footer {
   }
 
 
+  /* events nav page  */
+
+  .eventHeading {
+    font-size: 36px;
+  }
+
+  .eventsNavPage {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .eventImgContainer,
+  .eventImgContainer img {
+    height: 200px;
+    width: 200px;
+  }
+
+  .eventInfo {
+    width: 500px;
+    margin-left: 5%;
+  }
+
+
+
+
 
 
 }
