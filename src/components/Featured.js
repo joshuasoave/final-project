@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import {Icon} from 'react-materialize';
 
 class Featured extends React.Component {
   state = {
@@ -11,7 +12,7 @@ class Featured extends React.Component {
   //call database
   ////////
   callDatabase = () => {
-    return "https://floating-bayou-96095.herokuapp.com"
+    return "https://cors-anywhere.herokuapp.com/https://floating-bayou-96095.herokuapp.com"
   }
 
   //gets data from the api with the theme of featured and sets that to the state
@@ -28,7 +29,7 @@ class Featured extends React.Component {
   render() {
     return (
       <div>
-        <p>This is the Featured exhibit page</p>
+        <h2 className="exhibitHeading">Zimbabwe Sculpture</h2>
         <ul className="allExhibits">
         {
           this.state.featured.map (
