@@ -17,7 +17,7 @@ class Space extends React.Component {
 
     //gets data from the api with the theme of space and sets that to the state
   componentDidMount = () => {
-    axios.get(`/artifacts/space`).then(
+    axios.get(`${this.callDatabase()}/artifacts/space`).then(
       (response) => {
         this.setState({
           space:response.data

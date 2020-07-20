@@ -17,7 +17,7 @@ class Surrealism extends React.Component {
 
     //gets data from the api with the theme of surrealism and sets that to the state
   componentDidMount = () => {
-    axios.get(`/artifacts/surrealism`).then(
+    axios.get(`${this.callDatabase()}/artifacts/surrealism`).then(
       (response) => {
         this.setState({
           surrealism:response.data

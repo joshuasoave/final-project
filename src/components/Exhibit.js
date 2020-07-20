@@ -18,7 +18,7 @@ class Exhibit extends React.Component{
   getFavs = () => {
     if(this.props.loggedInUser){
       //this get request asks the database for all favorites of this user
-      axios.get(`/users/favorites/${this.props.loggedInUser._id}`).then((response) => {
+      axios.get(`${this.callDatabase()}/users/favorites/${this.props.loggedInUser._id}`).then((response) => {
       console.log(response.data.favorites);
         this.setState({
           favorites: response.data.favorites

@@ -17,7 +17,7 @@ class Events extends React.Component {
 
   //get all the events
   componentDidMount = () => {
-    axios.get(`/events`).then(
+    axios.get(`${this.callDatabase()}/events`).then(
       (response) => {
         this.setState({
           events:response.data

@@ -17,7 +17,7 @@ class Featured extends React.Component {
 
   //gets data from the api with the theme of featured and sets that to the state
   componentDidMount = () => {
-    axios.get(`/artifacts/featured`).then(
+    axios.get(`${this.callDatabase()}/artifacts/featured`).then(
       (response) => {
         this.setState({
           featured:response.data

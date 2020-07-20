@@ -18,7 +18,7 @@ class Favorites extends React.Component{
 
   componentDidMount = () => {
     //this get request asks the database for all favorites of this user
-    axios.get(`${this.props.location.pathname}`).then((response) => {
+    axios.get(`${this.callDatabase()}${this.props.location.pathname}`).then((response) => {
       // console.log(response.data.favorites);
       this.setState({
         favorites: response.data.favorites
