@@ -109,7 +109,7 @@ body {
 }
 
 #egyptExhibitsPageImg {
-  background-image: url("https://i.imgur.com/VBtGgr9.jpg");
+  background-image: url("https://i.imgur.com/lBRZqlw.jpg");
 }
 
 #surrealismExhibitsPageImg {
@@ -382,6 +382,44 @@ footer {
   .homeNavContainer {
     background-size: contain;
     border: 2px solid white
+  }
+
+/* exhibit nav page */
+  .exhibitsNavPage {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .exhibitHeading {
+    font-size: 36px;
+  }
+
+
+  .exhibitNavImg {
+    background-size: contain;
+    border: 2px solid white
+  }
+
+  /* each themed exhibit */
+  .allExhibits {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .exhibitNavContainer {
+    height: 350px;
+    width: 300px;
+  }
+
+  .exhibitNavContainer img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .exhibitNavContainer p {
+    font-size: 26px;
   }
 
 
