@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Header from './components/Header.js';
 import Home from './components/Home.js';
 import About from './components/About.js';
 import Featured from './components/Featured.js';
@@ -14,6 +13,8 @@ import Event from './components/Event.js';
 import Profile from './components/Profile.js';
 import Favorites from './components/Favorites.js';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {Icon} from 'react-materialize';
+
 
 //https://reactrouter.com/web/api/Route/render-func
 
@@ -27,7 +28,7 @@ class App extends React.Component {
   //call database
   ////////
   callDatabase = () => {
-    return "https://floating-bayou-96095.herokuapp.com"
+    return "https://cors-anywhere.herokuapp.com/https://floating-bayou-96095.herokuapp.com"
   }
 
   ///////////
@@ -154,23 +155,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container">
-          <header>
-           <Header />
-          </header>
-          <nav>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/events">Events</Link></li>
-              <li><Link to="/exhibits">Exhibits</Link></li>
-              <li><Link to="/about">About</Link></li>
-            </ul>
-            {
-            this.state.loggedInUser ?
-              <button onClick={this.logout}>Logout</button> : " "
-            }
-          </nav>
-
+        <div className="myContainer">
           <main className="main">
               <div>
                 <Route path="/" exact component={Home} />
@@ -212,19 +197,65 @@ class App extends React.Component {
 
           <footer className="pageFooter">
             <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/events">Events</Link></li>
-              <li><Link to="/exhibits">Exhibits</Link></li>
+              <li>
+                <Link to="/">
+                  <div>
+                    <Icon>home</Icon>
+                    <p>Home</p>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/events">
+                  <div>
+                    <Icon>event</Icon>
+                    <p>Events</p>
+                  </div>
+                </Link>
+              </li>
+              <li>
+                <Link to="/exhibits">
+                  <div>
+                    <Icon>map</Icon>
+                    <p>Exhibits</p>
+                  </div>
+                </Link>
+              </li>
               {
                 this.state.loggedInUser ?
-                <li><Link to={{
-                  pathname: `/users/favorites/${this.state.loggedInUser._id}`}}
-                  >Favorites</Link></li> :
+                <li>
+                  <Link to={{
+                    pathname: `/users/favorites/${this.state.loggedInUser._id}`}}
+                  >
+                    <div>
+                      <Icon>favorite</Icon>
+                      <p>Favorites</p>
+                    </div>
+                  </Link></li> :
                 " "
               }
-              <li><Link to={{
+              {
+                this.state.loggedInUser ?
+              <li>
+                <div onClick={this.logout} id="logout">
+                  <Icon>power_settings_new</Icon>
+                  <p>Logout</p>
+                </div>
+              </li>
+
+              :
+
+              <li>
+                <Link to={{
                 pathname: "/profile"
-              }}>Profile</Link></li>
+                }}>
+                  <div>
+                    <Icon>account_box</Icon>
+                    <p>Profile</p>
+                  </div>
+                </Link>
+            </li>
+            }
             </ul>
           </footer>
 

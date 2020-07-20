@@ -1,4 +1,5 @@
 import React from 'react';
+import {Icon} from 'react-materialize';
 
 class UserProfile extends React.Component {
   state = {
@@ -18,24 +19,30 @@ class UserProfile extends React.Component {
     const {login, getUsername, getPassword, loggedInUser, createUser, changeNewPassword, changeNewUsername, message} = this.props;
 
     return (
-      <div>
+      <div className="profile">
       {
-        loggedInUser ? "Logged in"
+        loggedInUser ?
+        <div className="loggedIn">
+          <img src="https://i.imgur.com/mneILhp.jpg" alt="Image of a museum"/>
+          <h3>Hello, {this.props.loggedInUser.username}</h3>
+          <h4>Thanks for logging in</h4>
+          <h5>Enjoy your visit at the Rufus Museum!</h5>
+        </div>
         :
         <>
         { this.state.createAccount ?
-          <>
+          <div className="signup">
               <h2>Sign Up</h2>
               <form onSubmit={createUser}>
                 Username: <input type="text" onKeyUp={changeNewUsername} placeholder="Username" /><br/>
                 Password: <input type="password" onKeyUp={changeNewPassword} placeholder="Password" /><br/>
                 <input type="submit" value="Sign Up" />
               </form>
-              <h2>Already have an account?</h2>
+              <h4>Already have an account?</h4>
                 <a href="#" onClick={this.toggleCreateAccount}>Login</a>
-          </>
+          </div>
           :
-          <>
+          <div className="login">
             <h2>Login</h2>
             <form onSubmit={login}>
             Username: <input onKeyUp={getUsername} type="text" placeholder="Username" /><br/>
@@ -47,9 +54,9 @@ class UserProfile extends React.Component {
               " "
             }
             </form>
-            <h2>Don't have an account?</h2>
+            <h4>Don't have an account?</h4>
             <a href="#" onClick={this.toggleCreateAccount}>Create an account</a>
-          </>
+          </div>
           }
         </>
       }

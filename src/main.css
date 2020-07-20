@@ -3,7 +3,10 @@
   margin: 0;
   padding: 0;
   color: white;
+  font-family: 'Source Sans Pro', sans-serif;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 
 /* MOBILE STYLE */
 body {
@@ -18,9 +21,7 @@ body {
   justify-content: center;
 }
 
-/*//////*/
-/* NAV */
-/*//////*/
+
 
 /*//////*/
 /* MAIN */
@@ -51,6 +52,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  margin-bottom: 2em;
 }
 
 #ourExhibits {
@@ -107,7 +109,7 @@ body {
 }
 
 #egyptExhibitsPageImg {
-  background-image: url("https://i.imgur.com/VBtGgr9.jpg");
+  background-image: url("https://i.imgur.com/lBRZqlw.jpg");
 }
 
 #surrealismExhibitsPageImg {
@@ -123,6 +125,11 @@ body {
   width: 100%;
 }
 
+.exhibitHeading {
+  font-size: 26px;
+  text-align: center;
+}
+
 .allExhibits {
   display: flex;
   flex-wrap: wrap;
@@ -131,9 +138,10 @@ body {
 }
 
 .exhibitNavContainer {
-  height: 200px;
+  height: 250px;
   width: 200px;
   margin: 3%;
+  text-align: left;
 }
 
 .exhibitNavContainer img {
@@ -148,10 +156,59 @@ body {
   font-size: 18px;
 }
 
+/* Each exhibit page  */
+.exhibitButton {
+  position: absolute;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#heart:hover {
+  cursor: pointer;
+}
+
+.exhibitShowPage h1 {
+  font-size: 28px;
+}
+
+#creator {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.exhibitShowImg {
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.exhibitShowPage img {
+  width: 100%;
+}
+
+.exhibitsShowInfo {
+  background: black;
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 80%;
+  margin-left: 1em;
+}
+
+#exhibitDescription {
+  margin-top: 1em;
+}
+
 /* Event nav page */
+.eventHeading {
+  text-align: center;
+  font-size: 26px;
+}
 
 .eventsNavPage {
   width: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .eventsNavPage a {
@@ -164,8 +221,8 @@ body {
 }
 
 .eventImgContainer img {
-  height: 125px;
-  width: 125px;
+  height: 110px;
+  width: 110px;
   object-fit: cover;
   border-radius: 5%;
   margin: 1em;
@@ -180,14 +237,112 @@ body {
 }
 
 .eventInfo h3 {
-  margin-top: 1em;
-  font-size: 20px;
+  margin-top: .7em;
+  font-size: 18px;
 }
 
 .eventInfo p {
   margin-top: 1em;
-  margin-bottom: .5em;
+  font-size: 16px;
+  color: grey;
   width: 80%;
+}
+
+/* Event display page  */
+.eventShow {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.eventShowImg {
+  width: 100%;
+}
+
+.eventShowImg img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.eventShowInfo {
+  height: 400px;
+  width: 90%;
+}
+
+.eventShowInfo h1 {
+  font-size: 26px;
+  margin-top: 1em;
+  margin-left: 1.3em;
+}
+
+.eventShowInfo h4 {
+  font-size: 22px;
+}
+
+.eventShowInfo p {
+  font-size: 22px;
+  font-weight: 300;
+  margin-left: 1.5em;
+}
+
+.eventShowInfo h4, #eventDescription {
+  margin-top: 1em;
+  margin-left: 1.5em;
+}
+
+#eventDescription {
+  line-height: 1.3em;
+}
+
+.eventBack {
+  position: absolute;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* Profile page */
+.profile {
+  margin-bottom: 12em;
+}
+
+.loggedIn {
+  text-align: center;
+}
+
+.signup, .login {
+  width: 80%;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8em;
+}
+
+.signup h4, .login h4 {
+  margin-top: 2em;
+}
+
+input[type=submit] {
+  color: black;
+  margin-left: 80%;
+  margin-top: 5%;
+  width: 75px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 7%;
+}
+
+.loggedIn h4 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.loggedIn h5 {
+  margin-bottom: -.5em;
+}
+
+.loggedIn img {
+  height: 350px;
+  width: 100%;
+  border: 2px solid white;
 }
 
 /*//////*/
@@ -196,6 +351,7 @@ body {
 footer {
   margin-top: 1em;
   height: 80px;
+  text-align: center;
 }
 
 .pageFooter {
@@ -219,4 +375,175 @@ footer {
   text-decoration: none;
 }
 
+#logout:hover {
+  cursor: pointer;
+}
+
+/*////////////*/
 /* DESKTOP  */
+/*///////////*/
+@media only screen and (min-width: 768px) {
+
+/* Home page nav */
+  .homeNavigation {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .homeNavContainer {
+    background-size: contain;
+    border: 2px solid white
+  }
+
+/* exhibit nav page */
+  .exhibitsNavPage {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .exhibitHeading {
+    font-size: 36px;
+  }
+
+
+  .exhibitNavImg {
+    background-size: contain;
+    border: 2px solid white
+  }
+
+  /* each themed exhibit */
+  .allExhibits {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .exhibitNavContainer {
+    height: 350px;
+    width: 300px;
+  }
+
+  .exhibitNavContainer img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .exhibitNavContainer p {
+    font-size: 26px;
+  }
+
+  /* exhibit show page  */
+
+  .exhibitShowPage, .exhibitButton {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .exhibitShowImg {
+    border: 5px solid white;
+    border-bottom: 0;
+    margin-top: 2em;
+    background: white;
+  }
+
+  .exhibitsShowInfo h1 {
+    font-size: 32px;
+  }
+
+  #creator {
+    font-size: 24px;
+  }
+
+  #exhibitDescription {
+    font-size: 20px;
+  }
+
+
+  /* events nav page  */
+
+  .eventHeading {
+    font-size: 36px;
+  }
+
+  .eventsNavPage {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .eventImgContainer,
+  .eventImgContainer img {
+    height: 200px;
+    width: 200px;
+  }
+
+  .eventInfo {
+    width: 500px;
+    margin-left: 5%;
+  }
+
+  /* event show page  */
+
+  .eventShow {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .eventShowImg {
+    border: 5px solid white;
+    border-bottom: 2px solid white;
+    margin-top: 2em;
+    background: white;
+  }
+
+  .eventShowInfo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    height: auto;
+  }
+
+  /* Profile page */
+
+  .profile {
+    display: flex;
+    justify-content: center;
+  }
+
+  .signup, .login {
+    margin-top: 3em;
+    text-align: left;
+    width: 50%;
+  }
+
+  .signup h4, .login h4 {
+    margin-bottom: 0;
+  }
+
+  input[type=submit] {
+    margin-left: 90%;
+  }
+
+  .loggedIn h4 {
+    margin-top: 1em;
+  }
+
+  .loggedIn img {
+    height: 400px;
+    width: 50%;
+  }
+
+  .loggedIn h5 {
+    margin-bottom: -3.5em;
+  }
+
+
+
+
+
+
+}

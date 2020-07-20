@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import {Icon} from 'react-materialize';
 
 class Egypt extends React.Component {
   state = {
@@ -11,7 +12,7 @@ class Egypt extends React.Component {
   //call database
   ////////
   callDatabase = () => {
-    return "https://floating-bayou-96095.herokuapp.com"
+    return "https://cors-anywhere.herokuapp.com/https://floating-bayou-96095.herokuapp.com"
   }
 
   //gets data from the api with the theme of egypt and sets that to the state
@@ -28,7 +29,7 @@ class Egypt extends React.Component {
   render() {
     return (
       <div>
-        <p>This is the Egypt page.</p>
+        <h2 className="exhibitHeading">Ancient Egypt</h2>
         <ul className="allExhibits">
         {
           this.state.egypt.map (
