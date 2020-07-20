@@ -29,7 +29,6 @@ class Featured extends React.Component {
   render() {
     return (
       <div>
-        <Icon>menu</Icon>
         <h2 className="exhibitHeading">Zimbabwe Sculpture</h2>
         <ul className="allExhibits">
         {
