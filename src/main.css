@@ -302,15 +302,22 @@ body {
 /* Profile page */
 .profile {
   margin-bottom: 12em;
+}
+
+.loggedIn {
   text-align: center;
 }
 
 .signup, .login {
   width: 80%;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8em;
 }
 
-.signup, .login {
-  font-size: 16px;
+.signup h4, .login h4 {
+  margin-top: 2em;
 }
 
 input[type=submit] {
@@ -328,9 +335,14 @@ input[type=submit] {
   margin-bottom: 1em;
 }
 
+.loggedIn h5 {
+  margin-bottom: -3em;
+}
+
 .loggedIn img {
   height: 400px;
   width: 100%;
+  border: 2px solid white;
 }
 
 /*//////*/
@@ -444,6 +456,41 @@ footer {
   .eventInfo {
     width: 500px;
     margin-left: 5%;
+  }
+
+
+  /* Profile page */
+
+  .profile {
+    display: flex;
+    justify-content: center;
+  }
+
+  .signup, .login {
+    margin-top: 3em;
+    text-align: left;
+    width: 50%;
+  }
+
+  .signup h4, .login h4 {
+    margin-bottom: 0;
+  }
+
+  input[type=submit] {
+    margin-left: 90%;
+  }
+
+  .loggedIn h4 {
+    margin-top: 1em;
+  }
+
+  .loggedIn img {
+    height: 400px;
+    width: 50%;
+  }
+
+  .loggedIn h5 {
+    margin-bottom: -4em;
   }
 
 
