@@ -18,14 +18,14 @@ class Exhibits extends React.Component{
           <li>
             <Link to="/egypt">
               <div className="exhibitNavImg" id="egyptExhibitsPageImg">
-                <p className="img-text">Ancient Egypt</p>
+                <p className="img-text">Egypt</p>
               </div>
             </Link>
           </li>
           <li>
             <Link to="/surrealism">
               <div className="exhibitNavImg" id="surrealismExhibitsPageImg">
-                <p className="img-text">Surrealist Art</p>
+                <p className="img-text">Surrealism</p>
               </div>
             </Link>
           </li>
