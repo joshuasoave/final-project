@@ -11,7 +11,7 @@ class Exhibits extends React.Component{
           <li>
             <Link to="/featured">
               <div className="exhibitNavImg" id="featuredExhibitsPageImg">
-                <p className="img-text">Featured Exhibit</p>
+                <p className="img-text">Featured</p>
               </div>
             </Link>
           </li>

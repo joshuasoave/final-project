@@ -11,7 +11,7 @@ class Home extends React.Component {
             <li>
               <Link to="/featured">
                 <div id="featuredNavImg" className="homeNavContainer">
-                  <p className="img-text">Featured Exhibit
+                  <p className="img-text">Featured
                   </p>
                 </div>
               </Link>
@@ -19,7 +19,7 @@ class Home extends React.Component {
             <li>
               <Link to="/exhibits">
                 <div id="ourExhibits" className="homeNavContainer">
-                  <p className="img-text">Our Exhibitions
+                  <p className="img-text">Exhibitions
                   </p>
                 </div>
               </Link>
@@ -27,7 +27,7 @@ class Home extends React.Component {
             <li>
               <Link to="/events">
                 <div id="currentEvents" className="homeNavContainer">
-                  <p className="img-text">Current Events
+                  <p className="img-text">Events
                   </p>
                 </div>
               </Link>
