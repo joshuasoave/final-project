@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-
+import {Icon} from 'react-materialize';
 
 class Events extends React.Component {
   state = {
@@ -12,12 +12,12 @@ class Events extends React.Component {
   //call database
   ////////
   callDatabase = () => {
-    return "https://floating-bayou-96095.herokuapp.com"
+    return "https://cors-anywhere.herokuapp.com/https://floating-bayou-96095.herokuapp.com"
   }
 
   //get all the events
   componentDidMount = () => {
-    axios.get(`${this.callDatabase()}/events`).then(
+    axios.get(`/events`).then(
       (response) => {
         this.setState({
           events:response.data
@@ -29,17 +29,18 @@ class Events extends React.Component {
   render() {
     return (
       <div>
-        <h3>Events</h3>
+
+        <h3 className="eventHeading">Events</h3>
           <ul className="eventsNavPage">
         {
           this.state.events.map(
             (eachEvent, index) => {
               return (
-              <Link to={{
+              <Link key={index} to={{
                     pathname: `/event/${eachEvent._id}`,
                     state: {eachEvent}
                   }}>
-                  <div key={index} className="eventsNavContainer">
+                  <div className="eventsNavContainer">
                     <div className="eventImgContainer">
                       <img src={eachEvent.image} alt={eachEvent.title}/>
                     </div>

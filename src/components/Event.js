@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {Icon} from 'react-materialize';
 
 class Event extends React.Component {
   render() {
@@ -8,9 +9,9 @@ class Event extends React.Component {
       let currentEvent = this.props.location.state.eachEvent;
     return (
       <div className="eventShow">
-        <p>This is the event description page</p>
-        <Link to="/events"><button>Back</button></Link>
-        <br/>
+        <Link to="/events" className="eventBack">
+          <Icon small>arrow_back</Icon>
+        </Link>
         <div className="eventShowImg">
           <img src={currentEvent.image} alt={currentEvent.name}/>
         </div>

@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   color: white;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -20,9 +21,7 @@ body {
   justify-content: center;
 }
 
-/*//////*/
-/* NAV */
-/*//////*/
+
 
 /*//////*/
 /* MAIN */
@@ -125,6 +124,11 @@ body {
   width: 100%;
 }
 
+.exhibitHeading {
+  font-size: 26px;
+  text-align: center;
+}
+
 .allExhibits {
   display: flex;
   flex-wrap: wrap;
@@ -133,9 +137,10 @@ body {
 }
 
 .exhibitNavContainer {
-  height: 200px;
+  height: 250px;
   width: 200px;
   margin: 3%;
+  text-align: left;
 }
 
 .exhibitNavContainer img {
@@ -150,7 +155,55 @@ body {
   font-size: 18px;
 }
 
+/* Each exhibit page  */
+.exhibitButton {
+  position: absolute;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#heart:hover {
+  cursor: pointer;
+}
+
+.exhibitShowPage h1 {
+  font-size: 28px;
+}
+
+#creator {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.exhibitShowImg {
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.exhibitShowPage img {
+  width: 100%;
+}
+
+.exhibitsShowInfo {
+  background: black;
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 80%;
+  margin-left: 1em;
+}
+
+#exhibitDescription {
+  margin-top: 1em;
+}
+
 /* Event nav page */
+.eventHeading {
+  text-align: center;
+  font-size: 26px;
+}
 
 .eventsNavPage {
   width: 100%;
@@ -200,18 +253,23 @@ body {
 }
 
 .eventShowImg {
-  overflow: hidden;
-  height: 400px;
+  width: 100%;
+}
+
+.eventShowImg img {
+  width: 100%;
+  object-fit: contain;
 }
 
 .eventShowInfo {
-  margin-left: 1.5em;
-  width: 85%;
+  height: 400px;
+  width: 90%;
 }
 
 .eventShowInfo h1 {
   font-size: 26px;
-  margin-top: .5em;
+  margin-top: 1em;
+  margin-left: 1.3em;
 }
 
 .eventShowInfo h4 {
@@ -221,14 +279,57 @@ body {
 .eventShowInfo p {
   font-size: 22px;
   font-weight: 300;
+  margin-left: 1.5em;
 }
 
 .eventShowInfo h4, #eventDescription {
   margin-top: 1em;
+  margin-left: 1.5em;
 }
 
 #eventDescription {
   line-height: 1.3em;
+}
+
+.eventBack {
+  position: absolute;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+/* Profile page */
+.profile {
+  margin-bottom: 12em;
+  text-align: center;
+}
+
+.signup, .login {
+  width: 80%;
+}
+
+.signup, .login {
+  font-size: 16px;
+}
+
+input[type=submit] {
+  color: black;
+  margin-left: 80%;
+  margin-top: 5%;
+  width: 75px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 7%;
+}
+
+.loggedIn h4 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.loggedIn img {
+  height: 400px;
+  width: 100%;
 }
 
 /*//////*/
@@ -237,6 +338,7 @@ body {
 footer {
   margin-top: 1em;
   height: 80px;
+  text-align: center;
 }
 
 .pageFooter {
@@ -258,6 +360,10 @@ footer {
 .pageFooter a {
   color: white;
   text-decoration: none;
+}
+
+#logout:hover {
+  cursor: pointer;
 }
 
 /* DESKTOP  */
