@@ -1,7 +1,6 @@
 {
   "name": "rufus_museum",
   "version": "0.1.0",
-  "proxy": "localhost:5000",
   "private": true,
   "engines": {
     "node": "12.16.2",
