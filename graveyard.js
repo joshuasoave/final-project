@@ -15,6 +15,8 @@
 
 <Icon>menu</Icon>
 
+https://cors-anywhere.herokuapp.com/
+
 /*//////*/
 /* NAV */
 /*//////*/

@@ -139,15 +139,15 @@ body {
 }
 
 .exhibitNavContainer {
-  height: 250px;
-  width: 200px;
-  margin: 3%;
+  height: 230px;
+  width: 180px;
+  margin: 2%;
   text-align: left;
 }
 
 .exhibitNavContainer img {
-  height: 200px;
-  width: 200px;
+  height: 170px;
+  width: 170px;
   object-fit: cover;
   border-radius: 3%;
 }
