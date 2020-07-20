@@ -199,6 +199,7 @@ body {
 
 #exhibitDescription {
   margin-top: 1em;
+  font-size: 16px;
 }
 
 /* Event nav page */
@@ -264,7 +265,7 @@ body {
 }
 
 .eventShowInfo {
-  height: 400px;
+  height: auto;
   width: 90%;
 }
 
