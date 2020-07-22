@@ -13,7 +13,7 @@ class Favorites extends React.Component{
   //call database
   ////////
   callDatabase = () => {
-    return "https://floating-bayou-96095.herokuapp.com"
+    return "https://cors-anywhere.herokuapp.com/https://floating-bayou-96095.herokuapp.com"
   }
 
   componentDidMount = () => {
