@@ -1,5 +1,7 @@
 # :telescope: Rüfus Museum :hourglass:
 
+![img of rufus museum](https://i.imgur.com/lh5prrU.png)
+
 ### :bulb: Creator:
 
 - Joshua Soave
@@ -114,4 +116,6 @@ favoriteArtifact = () => {
 
 ## :ticket: Future Features :japanese_castle:
 - Change the icon on exhibit page so it updates when the user already has this artifact in their favorites or when they click on the icon.
- 
+
+## Sources:
+- Sources for the API can be found [here](https://github.com/joshuasoave/museum_api)  
