@@ -12,7 +12,7 @@ class Egypt extends React.Component {
   //call database
   ////////
   callDatabase = () => {
-    return "https://cors-anywhere.herokuapp.com/https://floating-bayou-96095.herokuapp.com"
+    return `http://localhost:5000`
   }
 
   //gets data from the api with the theme of egypt and sets that to the state

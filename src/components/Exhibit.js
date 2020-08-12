@@ -12,7 +12,7 @@ class Exhibit extends React.Component{
   //call database
   ////////
   callDatabase = () => {
-    return "https://cors-anywhere.herokuapp.com/https://floating-bayou-96095.herokuapp.com"
+    return `http://localhost:5000`
   }
 
   getFavs = () => {
@@ -58,7 +58,7 @@ class Exhibit extends React.Component{
   //////
     //this put request calls the database and tells it to update the favroties array by pushing it into the array
   addFavorite = () => {
-    axios.put(`/users/exhibit/${this.props.location.state.artifact._id}`).then((response) => {
+    axios.put(`${this.callDatabase()}/users/exhibit/${this.props.location.state.artifact._id}`).then((response) => {
         console.log('adding to favs');
       //update the logged in user on app with new favs in their array
         this.props.getUser();
@@ -71,7 +71,7 @@ class Exhibit extends React.Component{
   ////////
   removeFavorite = (index) => {
     //pass in the index in the url so we can use it in the db to splice
-    axios.put(`/users/exhibit/remove/${index}`).then((response) => {
+    axios.put(`${this.callDatabase()}/users/exhibit/remove/${index}`).then((response) => {
       console.log('removing at index' + index);
         //update the logged in user on app with new favs in their array
       this.props.getUser();

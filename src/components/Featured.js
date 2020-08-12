@@ -12,7 +12,7 @@ class Featured extends React.Component {
   //call database
   ////////
   callDatabase = () => {
-    return "https://floating-bayou-96095.herokuapp.com"
+    return `http://localhost:5000`
   }
 
   //gets data from the api with the theme of featured and sets that to the state
